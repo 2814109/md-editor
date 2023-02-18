@@ -1,5 +1,4 @@
 import React, { FC, useRef, useState } from "react";
-import { splitByTag } from "../../libs/splitByTag";
 import { Card } from "../card/index";
 import { ContentType } from "../../types/ContentType";
 import { makeBeNamedList } from "../../libs/feature/dragAndDrop/makeBeNamedList";
@@ -11,16 +10,12 @@ type Props = {
   contents: string;
 };
 
-
-
 export const useDragComponents = ({ contents }: Props) => {
-
-  const beNamedList = makeBeNamedList(contents)
+  const beNamedList = makeBeNamedList(contents);
   const [dragList, setDragList] = useState<ContentType[]>(beNamedList);
 
   const setItems = (contents: string) => {
-
-    const beNamedList = makeBeNamedList(contents)
+    const beNamedList = makeBeNamedList(contents);
 
     setDragList(beNamedList);
   };
@@ -38,11 +33,11 @@ export const useDragComponents = ({ contents }: Props) => {
   });
 
   const handleDragOver = (event: React.DragEvent) => {
-    handleDrag(event, beDraggedObjectState, 'over')
+    handleDrag(event, beDraggedObjectState, "over");
   };
 
   const handleDragStart = (event: React.DragEvent) => {
-    handleDrag(event, draggingObjectState, 'start')
+    handleDrag(event, draggingObjectState, "start");
   };
 
   const replaceArrayElements = (
@@ -56,8 +51,8 @@ export const useDragComponents = ({ contents }: Props) => {
         index === replaceIndex
           ? originalArray[beReplacedIndex]
           : index === beReplacedIndex
-            ? originalArray[replaceIndex]
-            : element,
+          ? originalArray[replaceIndex]
+          : element,
       ],
       []
     );
@@ -68,8 +63,14 @@ export const useDragComponents = ({ contents }: Props) => {
       event.currentTarget.getAttribute("primary-key");
     const draggingElementPrimaryKey: string | null =
       draggingObjectState.current.point;
-    const hoveredElementIndex: number = getElementIndex(dragList, hoveredElementPrimaryKey)
-    const draggingElementIndex = getElementIndex(dragList, draggingElementPrimaryKey)
+    const hoveredElementIndex: number = getElementIndex(
+      dragList,
+      hoveredElementPrimaryKey
+    );
+    const draggingElementIndex = getElementIndex(
+      dragList,
+      draggingElementPrimaryKey
+    );
     const replaceList = replaceArrayElements(
       dragList,
       hoveredElementIndex,
@@ -81,7 +82,6 @@ export const useDragComponents = ({ contents }: Props) => {
   const DragAndDropArea: FC = () => (
     <>
       {dragList?.map((contentObject) => {
-        console.log("! " + contentObject);
         return (
           <div
             primary-key={contentObject.id}
