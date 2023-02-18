@@ -1,9 +1,8 @@
 import React, { FC, useRef, useState } from "react";
 import { Card } from "../card/index";
-import { ContentType } from "../../types/ContentType";
 import { makeBeNamedList } from "../../libs/feature/dragAndDrop/makeBeNamedList";
 import { getElementIndex } from "../../libs/feature/dragAndDrop/getElementIndex";
-import { PositionType } from "../../types/PositionType";
+import { PositionType, ContentType } from "../../types";
 import { handleDrag } from "../../libs/feature/dragAndDrop/handleDrag";
 
 type Props = {
