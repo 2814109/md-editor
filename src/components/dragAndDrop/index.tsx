@@ -4,26 +4,12 @@ import { makeBeNamedList } from "../../libs/feature/dragAndDrop/makeBeNamedList"
 import { getElementIndex } from "../../libs/feature/dragAndDrop/getElementIndex";
 import { PositionType, ContentType } from "../../types";
 import { handleDrag } from "../../libs/feature/dragAndDrop/handleDrag";
-
+import { replaceArrayElements } from "../../libs/feature/dragAndDrop/replaceArrayElements";
 type Props = {
   contents: string;
 };
 
 export const useDragComponents = ({ contents }: Props) => {
-  const beNamedList = makeBeNamedList(contents);
-  const [dragList, setDragList] = useState<ContentType[]>(beNamedList);
-
-  const setItems = (contents: string) => {
-    const beNamedList = makeBeNamedList(contents);
-
-    setDragList(beNamedList);
-  };
-
-  const updateDragList = (content: ContentType) => {
-    dragList[content.id] = content;
-    setDragList([...dragList]);
-  };
-
   const draggingObjectState = useRef<PositionType>({
     point: null,
   });
@@ -31,30 +17,23 @@ export const useDragComponents = ({ contents }: Props) => {
     point: null,
   });
 
+  const beNamedList = makeBeNamedList(contents);
+  const [dragList, setDragList] = useState<ContentType[]>(beNamedList);
+  const setItems = (contents: string) => {
+    const beNamedList = makeBeNamedList(contents);
+    setDragList(beNamedList);
+  };
+  const updateDragList = (content: ContentType) => {
+    dragList[content.id] = content;
+    setDragList([...dragList]);
+  };
+
   const handleDragOver = (event: React.DragEvent) => {
     handleDrag(event, beDraggedObjectState, "over");
   };
 
   const handleDragStart = (event: React.DragEvent) => {
     handleDrag(event, draggingObjectState, "start");
-  };
-
-  const replaceArrayElements = (
-    array: ContentType[],
-    replaceIndex: number,
-    beReplacedIndex: number
-  ) => {
-    return array.reduce(
-      (resultArray: ContentType[], element, index, originalArray) => [
-        ...resultArray,
-        index === replaceIndex
-          ? originalArray[beReplacedIndex]
-          : index === beReplacedIndex
-          ? originalArray[replaceIndex]
-          : element,
-      ],
-      []
-    );
   };
 
   const handleDrop = (event: React.DragEvent) => {
