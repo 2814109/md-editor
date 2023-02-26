@@ -1,10 +1,11 @@
 import { useEffect, useReducer } from "react";
 import { useRecoilState } from "recoil";
-import { useDragComponents } from "./components/dragAndDrop";
-import { useRenderDownloadButton } from "./components/dragAndDrop/useRenderDownloadButton";
+import { useDragComponents } from "./components/features/dragAndDrop";
 import { FrameComponent } from "./layouts/Frame";
 import { MarkdownState } from "./recoil/atoms/markdown";
 import { contentReducer } from "./libs/reducer/contentReducer";
+import "./index.module.css";
+
 function App() {
   const [markdown] = useRecoilState(MarkdownState);
   const [contents, dispatch] = useReducer(contentReducer, []);
@@ -13,7 +14,6 @@ function App() {
     dispatch({ type: "set_state", payload: markdown });
   }, [markdown]);
 
-  const { DownloadButton } = useRenderDownloadButton({ contents });
   const { DragAndDropArea } = useDragComponents({
     contents,
     dispatch,
@@ -21,9 +21,8 @@ function App() {
 
   return (
     <div className="App">
-      <FrameComponent>
+      <FrameComponent contents={contents}>
         <DragAndDropArea />
-        <DownloadButton />
       </FrameComponent>
     </div>
   );

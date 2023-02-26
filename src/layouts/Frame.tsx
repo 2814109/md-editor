@@ -1,14 +1,18 @@
 import { FC, ReactNode } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFileImport } from "@fortawesome/free-solid-svg-icons";
 import { markdownSelector } from "~/recoil/selectors/markdown/markdownSelector";
 import { useSetRecoilState } from "recoil";
+import { FileImport } from "~/components/atoms/button/FileImport";
+import { useRenderDownloadButton } from "~/components/features/dragAndDrop/useRenderDownloadButton";
+import { ContentType } from "~/types";
 type Props = {
   children: ReactNode;
+  contents: ContentType[];
 };
 
-export const FrameComponent: FC<Props> = ({ children }) => {
+export const FrameComponent: FC<Props> = ({ children, contents }) => {
   const set = useSetRecoilState(markdownSelector);
+
+  const { DownloadButton } = useRenderDownloadButton({ contents });
 
   const onFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const reader = new FileReader();
@@ -23,11 +27,9 @@ export const FrameComponent: FC<Props> = ({ children }) => {
 
   return (
     <>
-      <i>
-        <input type="file" accept=".md" onChange={onFileInputChange} />
-        <FontAwesomeIcon icon={faFileImport} />
-      </i>
+      <FileImport handleClick={onFileInputChange} />
       {children}
+      <DownloadButton />
     </>
   );
 };

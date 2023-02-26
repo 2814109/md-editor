@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { ContentType } from "~/types";
-
+import { FileExport } from "~/components/atoms/button/FileExport/index";
 type Props = {
   contents: ContentType[];
 };
@@ -19,11 +19,7 @@ export const useRenderDownloadButton = ({ contents }: Props) => {
   };
 
   const DownloadButton: FC = () => (
-    <div>
-      <button onClick={handleMarkdownDownload} type="button">
-        Export
-      </button>
-    </div>
+    <FileExport handleMarkdownDownload={handleMarkdownDownload} />
   );
 
   return { DownloadButton, handleMarkdownDownload };
