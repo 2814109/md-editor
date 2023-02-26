@@ -1,37 +1,29 @@
-import React, { FC, useRef, useState } from "react";
+import React, { Dispatch, FC, useRef } from "react";
 import { Card } from "../card/index";
-import { makeSplitByTagList } from "../../libs/feature/dragAndDrop/makeSplitByTagList";
 import { getElementIndex } from "../../libs/feature/dragAndDrop/getElementIndex";
 import { PositionType, ContentType } from "../../types";
 import { handleDrag } from "../../libs/feature/dragAndDrop/handleDrag";
 import { replaceArrayElements } from "../../libs/feature/dragAndDrop/replaceArrayElements";
 
-import { useRenderDownloadButton } from "./useRenderDownloadButton";
 type Props = {
+  dragList: ContentType[];
   contents: string;
+  setDragList: Dispatch<ContentType[]>;
+  updateDragList: Dispatch<ContentType>;
 };
 
-export const useDragComponents = ({ contents }: Props) => {
+export const useDragComponents = ({
+  contents,
+  dragList,
+  setDragList,
+  updateDragList,
+}: Props) => {
   const draggingObjectState = useRef<PositionType>({
     point: null,
   });
   const beDraggedObjectState = useRef<PositionType>({
     point: null,
   });
-
-  const splitByTagList = makeSplitByTagList(contents);
-  const [dragList, setDragList] = useState<ContentType[]>(splitByTagList);
-
-  const { DownloadButton } = useRenderDownloadButton({ contents: dragList });
-  const setItems = (contents: string) => {
-    const splitByTagList = makeSplitByTagList(contents);
-    setDragList(splitByTagList);
-  };
-  const updateDragList = (content: ContentType) => {
-    dragList[content.id] = content;
-
-    setDragList([...dragList]);
-  };
 
   const handleDragOver = (event: React.DragEvent) => {
     handleDrag(event, beDraggedObjectState, "over");
@@ -79,9 +71,8 @@ export const useDragComponents = ({ contents }: Props) => {
           </div>
         );
       })}
-      <DownloadButton />
     </>
   );
 
-  return { DragAndDropArea, setItems };
+  return { DragAndDropArea };
 };
