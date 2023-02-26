@@ -1,5 +1,7 @@
 import { Dispatch, DispatchWithoutAction, FC, useState } from "react";
 import { ContentType } from "~/types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFloppyDisk } from "@fortawesome/free-regular-svg-icons";
 
 type EditCardProps = {
   content: ContentType;
@@ -15,14 +17,19 @@ export const EditMode: FC<EditCardProps> = ({
 
   return (
     <div>
-      <button
-        onClick={() => {
-          updateContents({ id: content.id, content: editContent });
-          toggleIsEdit();
-        }}
-      >
-        Save
-      </button>
+      <label>
+        <button
+          type="button"
+          onClick={() => {
+            updateContents({ id: content.id, content: editContent });
+            toggleIsEdit();
+          }}
+        />
+        <i>
+          <FontAwesomeIcon icon={faFloppyDisk} />
+        </i>
+      </label>
+
       <div>
         <textarea
           value={editContent}
