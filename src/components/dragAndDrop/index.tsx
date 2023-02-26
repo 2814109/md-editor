@@ -1,21 +1,22 @@
 import React, { Dispatch, FC, useRef } from "react";
 import { Card } from "../card/index";
-import { getElementIndex } from "../../libs/feature/dragAndDrop/getElementIndex";
-import { PositionType, ContentType } from "../../types";
-import { handleDrag } from "../../libs/feature/dragAndDrop/handleDrag";
-import { replaceArrayElements } from "../../libs/feature/dragAndDrop/replaceArrayElements";
-
+import { getElementIndex } from "~/libs/feature/dragAndDrop/getElementIndex";
+import { PositionType, ContentType } from "~/types";
+import {
+  handleDragStart,
+  handleDragOver,
+} from "~/libs/feature/dragAndDrop/handleDrag";
+import { replaceArrayElements } from "~/libs/feature/dragAndDrop/replaceArrayElements";
+import { CONTENT_ACTION } from "~/types";
 type Props = {
-  dragList: ContentType[];
-  contents: string;
-  setDragList: Dispatch<ContentType[]>;
+  contents: ContentType[];
+  dispatch: Dispatch<CONTENT_ACTION>;
   updateDragList: Dispatch<ContentType>;
 };
 
 export const useDragComponents = ({
   contents,
-  dragList,
-  setDragList,
+  dispatch,
   updateDragList,
 }: Props) => {
   const draggingObjectState = useRef<PositionType>({
@@ -25,12 +26,12 @@ export const useDragComponents = ({
     point: null,
   });
 
-  const handleDragOver = (event: React.DragEvent) => {
-    handleDrag(event, beDraggedObjectState, "over");
+  const dragOver = (event: React.DragEvent) => {
+    handleDragOver(event, beDraggedObjectState);
   };
 
-  const handleDragStart = (event: React.DragEvent) => {
-    handleDrag(event, draggingObjectState, "start");
+  const dragStart = (event: React.DragEvent) => {
+    handleDragStart(event, draggingObjectState);
   };
 
   const handleDrop = (event: React.DragEvent) => {
@@ -39,24 +40,27 @@ export const useDragComponents = ({
     const draggingElementPrimaryKey: string | null =
       draggingObjectState.current.point;
     const hoveredElementIndex: number = getElementIndex(
-      dragList,
+      contents,
       hoveredElementPrimaryKey
     );
     const draggingElementIndex = getElementIndex(
-      dragList,
+      contents,
       draggingElementPrimaryKey
     );
     const replaceList = replaceArrayElements(
-      dragList,
+      contents,
       hoveredElementIndex,
       draggingElementIndex
     );
-    setDragList(replaceList);
+    dispatch({
+      type: "set_state",
+      payload: replaceList.map(({ content }) => content).join("\n"),
+    });
   };
 
   const DragAndDropArea: FC = () => (
     <>
-      {dragList?.map((contentObject) => {
+      {contents?.map((contentObject) => {
         return (
           <div
             primary-key={contentObject.id}
@@ -64,8 +68,8 @@ export const useDragComponents = ({
             key={contentObject.id}
             draggable={true}
             onDrop={handleDrop}
-            onDragStart={handleDragStart}
-            onDragOver={handleDragOver}
+            onDragStart={dragStart}
+            onDragOver={dragOver}
           >
             <Card content={contentObject} updateDragList={updateDragList} />
           </div>

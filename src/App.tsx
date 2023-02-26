@@ -1,38 +1,34 @@
-import { useEffect, useState } from "react";
-import { RecoilRoot, useRecoilState } from "recoil";
+import { useEffect, useReducer } from "react";
+import { useRecoilState } from "recoil";
 import { useDragComponents } from "./components/dragAndDrop";
 import { useRenderDownloadButton } from "./components/dragAndDrop/useRenderDownloadButton";
 import { FrameComponent } from "./layouts/Frame";
-import { makeSplitByTagList } from "./libs/feature/dragAndDrop/makeSplitByTagList";
 import { MarkdownState } from "./recoil/atoms/markdown";
 import { ContentType } from "./types";
+import { contentReducer } from "./libs/reducer/contentReducer";
 function App() {
   const [markdown] = useRecoilState(MarkdownState);
-  const splitByTagList = makeSplitByTagList(markdown);
 
-  const [dragList, setDragList] = useState<ContentType[]>(splitByTagList);
+  const [contents, dispatch] = useReducer(contentReducer, []);
 
-  const setItems = (contents: string) => {
-    const splitByTagList = makeSplitByTagList(contents);
-    setDragList(splitByTagList);
-  };
-
+  console.log(contents);
   useEffect(() => {
-    setItems(markdown);
+    dispatch({ type: "set_state", payload: markdown });
   }, [markdown]);
 
-  const { DownloadButton } = useRenderDownloadButton({ contents: dragList });
+  const { DownloadButton } = useRenderDownloadButton({ contents });
 
   const updateDragList = (content: ContentType) => {
-    dragList[content.id] = content;
-
-    setDragList([...dragList]);
+    contents[content.id] = content;
+    dispatch({
+      type: "set_state",
+      payload: contents.map(({ content }) => content).join("\n"),
+    });
   };
 
   const { DragAndDropArea } = useDragComponents({
-    contents: markdown,
-    dragList,
-    setDragList,
+    contents,
+    dispatch,
     updateDragList,
   });
 
@@ -40,8 +36,8 @@ function App() {
     <div className="App">
       <FrameComponent>
         <DragAndDropArea />
+        <DownloadButton />
       </FrameComponent>
-      <DownloadButton />
     </div>
   );
 }

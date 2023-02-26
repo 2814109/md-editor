@@ -1,13 +1,17 @@
 import { MutableRefObject } from "react";
 import { PositionType } from "../../../types/figurative/PositionType";
 
-type PatternOfDragType = "start" | "over";
-
-export const handleDrag = (
+export const handleDragStart = (
   event: React.DragEvent,
-  position: MutableRefObject<PositionType>,
-  patternOfDrag: PatternOfDragType
+  position: MutableRefObject<PositionType>
 ) => {
-  if (patternOfDrag === "over") event.preventDefault();
+  position.current.point = event.currentTarget.getAttribute("primary-key");
+};
+
+export const handleDragOver = (
+  event: React.DragEvent,
+  position: MutableRefObject<PositionType>
+) => {
+  event.preventDefault();
   position.current.point = event.currentTarget.getAttribute("primary-key");
 };

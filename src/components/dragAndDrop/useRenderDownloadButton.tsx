@@ -4,6 +4,7 @@ import { ContentType } from "../../types";
 type Props = {
   contents: ContentType[];
 };
+
 export const useRenderDownloadButton = ({ contents }: Props) => {
   const joinContents = contents?.map(({ content }) => content).join("\n");
   const handleMarkdownDownload = () => {
@@ -18,9 +19,11 @@ export const useRenderDownloadButton = ({ contents }: Props) => {
   };
 
   const DownloadButton: FC = () => (
-    <button onClick={handleMarkdownDownload} type="button">
-      Export
-    </button>
+    <div>
+      <button onClick={handleMarkdownDownload} type="button">
+        Export
+      </button>
+    </div>
   );
 
   return { DownloadButton, handleMarkdownDownload };

@@ -16,7 +16,6 @@ export const replaceArrayElements = (
     ],
     []
   );
-  console.log(result);
 
   const reNumberingList: ContentType[] = result.map((content, index) => ({
     id: index,
