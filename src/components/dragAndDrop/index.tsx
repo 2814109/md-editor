@@ -11,14 +11,17 @@ import { CONTENT_ACTION } from "~/types";
 type Props = {
   contents: ContentType[];
   dispatch: Dispatch<CONTENT_ACTION>;
-  updateDragList: Dispatch<ContentType>;
 };
 
-export const useDragComponents = ({
-  contents,
-  dispatch,
-  updateDragList,
-}: Props) => {
+export const useDragComponents = ({ contents, dispatch }: Props) => {
+  const updateContents = (content: ContentType) => {
+    contents[content.id] = content;
+    dispatch({
+      type: "set_state",
+      payload: contents.map(({ content }) => content).join("\n"),
+    });
+  };
+
   const draggingObjectState = useRef<PositionType>({
     point: null,
   });
@@ -52,6 +55,7 @@ export const useDragComponents = ({
       hoveredElementIndex,
       draggingElementIndex
     );
+
     dispatch({
       type: "set_state",
       payload: replaceList.map(({ content }) => content).join("\n"),
@@ -71,7 +75,7 @@ export const useDragComponents = ({
             onDragStart={dragStart}
             onDragOver={dragOver}
           >
-            <Card content={contentObject} updateDragList={updateDragList} />
+            <Card content={contentObject} updateContents={updateContents} />
           </div>
         );
       })}

@@ -4,10 +4,10 @@ import { DisplayMode } from "./mode/display";
 import { ContentType } from "../../types/figurative/ContentType";
 type Props = {
   content: ContentType;
-  updateDragList: Dispatch<ContentType>;
+  updateContents: Dispatch<ContentType>;
 };
 
-export const Card: FC<Props> = ({ content, updateDragList }) => {
+export const Card: FC<Props> = ({ content, updateContents }) => {
   const [isEdit, toggleIsEdit] = useReducer((state) => {
     return !state;
   }, false);
@@ -17,7 +17,7 @@ export const Card: FC<Props> = ({ content, updateDragList }) => {
       {isEdit ? (
         //   Edit Mode
         <EditMode
-          updateDragList={updateDragList}
+          updateContents={updateContents}
           toggleIsEdit={toggleIsEdit}
           content={content}
         />

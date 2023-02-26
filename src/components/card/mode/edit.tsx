@@ -4,11 +4,11 @@ import { ContentType } from "../../../types/figurative/ContentType";
 type EditCardProps = {
   content: ContentType;
   toggleIsEdit: DispatchWithoutAction;
-  updateDragList: Dispatch<ContentType>;
+  updateContents: Dispatch<ContentType>;
 };
 export const EditMode: FC<EditCardProps> = ({
   toggleIsEdit,
-  updateDragList,
+  updateContents,
   content,
 }) => {
   const [editContent, setEditContent] = useState<string>(content.content);
@@ -17,7 +17,7 @@ export const EditMode: FC<EditCardProps> = ({
     <div>
       <button
         onClick={() => {
-          updateDragList({ id: content.id, content: editContent });
+          updateContents({ id: content.id, content: editContent });
           toggleIsEdit();
         }}
       >
