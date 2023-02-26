@@ -5,6 +5,8 @@ import { getElementIndex } from "../../libs/feature/dragAndDrop/getElementIndex"
 import { PositionType, ContentType } from "../../types";
 import { handleDrag } from "../../libs/feature/dragAndDrop/handleDrag";
 import { replaceArrayElements } from "../../libs/feature/dragAndDrop/replaceArrayElements";
+
+import { useRenderDownloadButton } from "./useRenderDownloadButton";
 type Props = {
   contents: string;
 };
@@ -17,11 +19,10 @@ export const useDragComponents = ({ contents }: Props) => {
     point: null,
   });
 
-  const downloadRef = useRef();
-
   const splitByTagList = makeSplitByTagList(contents);
   const [dragList, setDragList] = useState<ContentType[]>(splitByTagList);
 
+  const { DownloadButton } = useRenderDownloadButton({ contents: dragList });
   const setItems = (contents: string) => {
     const splitByTagList = makeSplitByTagList(contents);
     setDragList(splitByTagList);
@@ -60,19 +61,6 @@ export const useDragComponents = ({ contents }: Props) => {
     setDragList(replaceList);
   };
 
-  const handleMarkdownDownload = () => {
-    console.log("#");
-    console.log();
-    const blob = new Blob([dragList.map(({ content }) => content).join("\n")], {
-      type: "text/plain",
-    });
-    const link = document.createElement("a");
-    link.download = "remake.md";
-    link.href = URL.createObjectURL(blob);
-    link.click();
-    URL.revokeObjectURL(link.href);
-  };
-
   const DragAndDropArea: FC = () => (
     <>
       {dragList?.map((contentObject) => {
@@ -90,9 +78,7 @@ export const useDragComponents = ({ contents }: Props) => {
           </div>
         );
       })}
-      <button onClick={handleMarkdownDownload} type="button">
-        Export
-      </button>
+      <DownloadButton />
     </>
   );
 
