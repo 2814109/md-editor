@@ -1,0 +1,8 @@
+.layoutContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.contentContainer {
+  margin: auto;
+}

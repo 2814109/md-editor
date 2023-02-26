@@ -4,12 +4,13 @@ import { useSetRecoilState } from "recoil";
 import { FileImport } from "~/components/atoms/button/FileImport";
 import { useRenderDownloadButton } from "~/components/features/dragAndDrop/useRenderDownloadButton";
 import { ContentType } from "~/types";
+import style from "./style.module.css";
 type Props = {
   children: ReactNode;
   contents: ContentType[];
 };
 
-export const FrameComponent: FC<Props> = ({ children, contents }) => {
+export const Frame: FC<Props> = ({ children, contents }) => {
   const set = useSetRecoilState(markdownSelector);
 
   const { DownloadButton } = useRenderDownloadButton({ contents });
@@ -27,9 +28,13 @@ export const FrameComponent: FC<Props> = ({ children, contents }) => {
 
   return (
     <>
-      <FileImport handleClick={onFileInputChange} />
-      {children}
-      <DownloadButton />
+      <div className={style.layoutContainer}>
+        <FileImport handleClick={onFileInputChange} />
+      </div>
+      <div className={style.contentContainer}>{children}</div>
+      <div className={style.layoutContainer}>
+        <DownloadButton />
+      </div>
     </>
   );
 };
