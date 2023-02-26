@@ -1,5 +1,5 @@
 import React, { Dispatch, FC, useRef } from "react";
-import { Card } from "../card/index";
+import { CardSection } from "../card/index";
 import { getElementIndex } from "~/libs/feature/dragAndDrop/getElementIndex";
 import { PositionType, ContentType } from "~/types";
 import {
@@ -75,7 +75,10 @@ export const useDragComponents = ({ contents, dispatch }: Props) => {
             onDragStart={dragStart}
             onDragOver={dragOver}
           >
-            <Card content={contentObject} updateContents={updateContents} />
+            <CardSection
+              content={contentObject}
+              updateContents={updateContents}
+            />
           </div>
         );
       })}
