@@ -1,6 +1,6 @@
 import React, { FC, useRef, useState } from "react";
 import { Card } from "../card/index";
-import { makeBeNamedList } from "../../libs/feature/dragAndDrop/makeBeNamedList";
+import { makeSplitByTagList } from "../../libs/feature/dragAndDrop/makeBeNamedList";
 import { getElementIndex } from "../../libs/feature/dragAndDrop/getElementIndex";
 import { PositionType, ContentType } from "../../types";
 import { handleDrag } from "../../libs/feature/dragAndDrop/handleDrag";
@@ -17,11 +17,14 @@ export const useDragComponents = ({ contents }: Props) => {
     point: null,
   });
 
-  const beNamedList = makeBeNamedList(contents);
-  const [dragList, setDragList] = useState<ContentType[]>(beNamedList);
+  const downloadRef = useRef();
+
+  const splitByTagList = makeSplitByTagList(contents);
+  const [dragList, setDragList] = useState<ContentType[]>(splitByTagList);
+
   const setItems = (contents: string) => {
-    const beNamedList = makeBeNamedList(contents);
-    setDragList(beNamedList);
+    const splitByTagList = makeSplitByTagList(contents);
+    setDragList(splitByTagList);
   };
   const updateDragList = (content: ContentType) => {
     dragList[content.id] = content;
@@ -57,6 +60,19 @@ export const useDragComponents = ({ contents }: Props) => {
     setDragList(replaceList);
   };
 
+  const handleMarkdownDownload = () => {
+    console.log("#");
+    console.log();
+    const blob = new Blob([dragList.map(({ content }) => content).join("\n")], {
+      type: "text/plain",
+    });
+    const link = document.createElement("a");
+    link.download = "remake.md";
+    link.href = URL.createObjectURL(blob);
+    link.click();
+    URL.revokeObjectURL(link.href);
+  };
+
   const DragAndDropArea: FC = () => (
     <>
       {dragList?.map((contentObject) => {
@@ -74,6 +90,9 @@ export const useDragComponents = ({ contents }: Props) => {
           </div>
         );
       })}
+      <button onClick={handleMarkdownDownload} type="button">
+        Export
+      </button>
     </>
   );
 
