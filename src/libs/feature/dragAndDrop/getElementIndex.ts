@@ -1,4 +1,4 @@
-import { ContentType } from "../../../types/figurative/ContentType";
+import { ContentType } from "~/types";
 
 export const getElementIndex = (
   contentsList: ContentType[],

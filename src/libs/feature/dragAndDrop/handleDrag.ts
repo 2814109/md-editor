@@ -1,5 +1,5 @@
 import { MutableRefObject } from "react";
-import { PositionType } from "../../../types/figurative/PositionType";
+import { PositionType } from "~/types";
 
 export const handleDragStart = (
   event: React.DragEvent,

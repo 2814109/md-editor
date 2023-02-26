@@ -1,5 +1,5 @@
 import { selector } from "recoil";
-import { MarkdownState } from "../../atoms/markdown";
+import { MarkdownState } from "~/recoil/atoms/markdown";
 
 export const markdownSelector = selector({
   key: "markdownSelector",

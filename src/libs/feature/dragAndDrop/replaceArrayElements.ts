@@ -1,4 +1,4 @@
-import { ContentType } from "../../../types";
+import { ContentType } from "~/types";
 
 export const replaceArrayElements = (
   array: ContentType[],

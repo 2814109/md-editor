@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { ContentType } from "../../types";
+import { ContentType } from "~/types";
 
 type Props = {
   contents: ContentType[];

@@ -1,5 +1,5 @@
 import { Dispatch, DispatchWithoutAction, FC, useState } from "react";
-import { ContentType } from "../../../types/figurative/ContentType";
+import { ContentType } from "~/types";
 
 type EditCardProps = {
   content: ContentType;

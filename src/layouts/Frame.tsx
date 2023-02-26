@@ -1,7 +1,7 @@
 import { FC, ReactNode } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileImport } from "@fortawesome/free-solid-svg-icons";
-import { markdownSelector } from "../recoil/selectors/markdown/markdownSelector";
+import { markdownSelector } from "~/recoil/selectors/markdown/markdownSelector";
 import { useSetRecoilState } from "recoil";
 type Props = {
   children: ReactNode;

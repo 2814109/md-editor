@@ -1,7 +1,7 @@
 import { Dispatch, FC, useReducer } from "react";
 import { EditMode } from "./mode/edit";
 import { DisplayMode } from "./mode/display";
-import { ContentType } from "../../types/figurative/ContentType";
+import { ContentType } from "~/types";
 type Props = {
   content: ContentType;
   updateContents: Dispatch<ContentType>;

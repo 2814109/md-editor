@@ -1,5 +1,5 @@
 import { CONTENT_ACTION, ContentType } from "~/types";
-import { makeSplitByTagList } from "~/libs/feature/dragAndDrop/makeSplitByTagList";
+import { makeContents } from "./makeContents";
 import { Reducer } from "react";
 
 export const contentReducer: Reducer<ContentType[], CONTENT_ACTION> = (
@@ -8,6 +8,6 @@ export const contentReducer: Reducer<ContentType[], CONTENT_ACTION> = (
 ) => {
   switch (action.type) {
     case "set_state":
-      return makeSplitByTagList(action.payload);
+      return makeContents(action.payload);
   }
 };
