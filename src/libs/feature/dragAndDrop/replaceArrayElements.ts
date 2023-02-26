@@ -5,7 +5,7 @@ export const replaceArrayElements = (
   replaceIndex: number,
   beReplacedIndex: number
 ) => {
-  return array.reduce(
+  const result = array.reduce(
     (resultArray: ContentType[], element, index, originalArray) => [
       ...resultArray,
       index === replaceIndex
@@ -16,4 +16,11 @@ export const replaceArrayElements = (
     ],
     []
   );
+  console.log(result);
+
+  const reNumberingList: ContentType[] = result.map((content, index) => ({
+    id: index,
+    content: content.content,
+  }));
+  return reNumberingList;
 };

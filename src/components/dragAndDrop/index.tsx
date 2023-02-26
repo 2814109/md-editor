@@ -1,6 +1,6 @@
 import React, { FC, useRef, useState } from "react";
 import { Card } from "../card/index";
-import { makeSplitByTagList } from "../../libs/feature/dragAndDrop/makeBeNamedList";
+import { makeSplitByTagList } from "../../libs/feature/dragAndDrop/makeSplitByTagList";
 import { getElementIndex } from "../../libs/feature/dragAndDrop/getElementIndex";
 import { PositionType, ContentType } from "../../types";
 import { handleDrag } from "../../libs/feature/dragAndDrop/handleDrag";
@@ -29,6 +29,7 @@ export const useDragComponents = ({ contents }: Props) => {
   };
   const updateDragList = (content: ContentType) => {
     dragList[content.id] = content;
+
     setDragList([...dragList]);
   };
 
