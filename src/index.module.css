@@ -1,4 +1,21 @@
+body {
+  margin: initial;
+  background-color: #e2fac7;
+  padding: 24px 0px;
+}
 i {
   cursor: pointer;
   font-size: 48px;
+}
+
+.root {
+  background-color: #e2fac7;
+}
+
+.outputContent {
+  padding: 8px 32px;
+  background-color: #bcf47c;
+  height: 100%;
+  box-sizing: border-box;
+  border-radius: 8px;
 }

@@ -8,6 +8,8 @@ import {
 } from "~/libs/feature/dragAndDrop/handleDrag";
 import { replaceArrayElements } from "~/libs/feature/dragAndDrop/replaceArrayElements";
 import { CONTENT_ACTION } from "~/types";
+import style from "./style.module.css";
+
 type Props = {
   contents: ContentType[];
   dispatch: Dispatch<CONTENT_ACTION>;
@@ -63,7 +65,7 @@ export const useDragComponents = ({ contents, dispatch }: Props) => {
   };
 
   const DragAndDropArea: FC = () => (
-    <>
+    <div className={style.ContentAreaContainer}>
       {contents?.map((contentObject) => {
         return (
           <div
@@ -82,7 +84,7 @@ export const useDragComponents = ({ contents, dispatch }: Props) => {
           </div>
         );
       })}
-    </>
+    </div>
   );
 
   return { DragAndDropArea };

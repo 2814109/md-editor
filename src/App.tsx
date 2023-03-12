@@ -5,7 +5,7 @@ import { Frame } from "./layouts/Frame";
 import { MainContent } from "./layouts/MainContent";
 import { MarkdownState } from "./recoil/atoms/markdown";
 import { contentReducer } from "./libs/reducer/contentReducer";
-import "./index.module.css";
+import style from "./index.module.css";
 import ReactMarkdown from "react-markdown";
 import { Section } from "./layouts/Section";
 function App() {
@@ -22,16 +22,20 @@ function App() {
   });
 
   return (
-    <div>
+    <div className={style.root}>
       <Frame contents={contents}>
         <MainContent>
           <Section>
             <DragAndDropArea />
           </Section>
           <Section>
-            <ReactMarkdown
-              children={contents.map(({ content }) => content).join("\n")}
-            />
+            {contents.length > 0 && (
+              <div className={style.outputContent}>
+                <ReactMarkdown
+                  children={contents.map(({ content }) => content).join("\n")}
+                />
+              </div>
+            )}
           </Section>
         </MainContent>
       </Frame>

@@ -1,40 +1,23 @@
 import { FC, ReactNode } from "react";
-import { markdownSelector } from "~/recoil/selectors/markdown/markdownSelector";
-import { useSetRecoilState } from "recoil";
-import { FileImport } from "~/components/atoms/button/FileImport";
-import { useRenderDownloadButton } from "~/components/features/dragAndDrop/useRenderDownloadButton";
+
 import { ContentType } from "~/types";
 import style from "./style.module.css";
+import { Spacer } from "~/components/atoms/Spacer";
+import { Footer } from "./Footer";
+import { Header } from "./Header";
 type Props = {
   children: ReactNode;
   contents: ContentType[];
 };
 
 export const Frame: FC<Props> = ({ children, contents }) => {
-  const set = useSetRecoilState(markdownSelector);
-
-  const { DownloadButton } = useRenderDownloadButton({ contents });
-
-  const onFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const reader = new FileReader();
-    const file: FileList | null = e.target.files;
-    if (file instanceof FileList) {
-      reader.readAsText(file[0]);
-      reader.onload = (e: ProgressEvent<FileReader>) => {
-        set(String(e?.target?.result));
-      };
-    }
-  };
-
   return (
     <>
-      <div className={style.layoutContainer}>
-        <FileImport handleClick={onFileInputChange} />
-      </div>
+      <Header />
+      <Spacer size={24} />
       <div className={style.contentContainer}>{children}</div>
-      <div className={style.layoutContainer}>
-        <DownloadButton />
-      </div>
+      <Spacer size={24} />
+      <Footer contents={contents} />
     </>
   );
 };
