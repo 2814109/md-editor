@@ -1,5 +1,5 @@
 import { Dispatch, FC, useReducer } from "react";
-import { EditMode } from "./mode/edit";
+import { EditMode } from "./mode/edit/index";
 import { DisplayMode } from "./mode/display";
 import { ContentType } from "~/types";
 import { Card } from "~/components/atoms/card";
