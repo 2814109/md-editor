@@ -10,7 +10,7 @@ export const FileImport: FC<Props> = ({ handleClick }) => (
     <label>
       <input type="file" accept=".md" onChange={handleClick} />
       <i>
-        <FontAwesomeIcon icon={faFileImport} />
+        <FontAwesomeIcon className={style.fileImportIcon} icon={faFileImport} />
       </i>
     </label>
   </div>

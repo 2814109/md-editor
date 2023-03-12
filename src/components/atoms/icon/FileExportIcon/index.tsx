@@ -9,7 +9,7 @@ export const FileExport: FC<Props> = ({ handleMarkdownDownload }) => (
   <label style={style}>
     <button onClick={handleMarkdownDownload} type="button" />
     <i>
-      <FontAwesomeIcon icon={faDownload} />
+      <FontAwesomeIcon className={style.fileExportIcon} icon={faDownload} />
     </i>
   </label>
 );
