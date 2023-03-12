@@ -2,6 +2,7 @@ import { Dispatch, DispatchWithoutAction, FC, useState } from "react";
 import { ContentType } from "~/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFloppyDisk } from "@fortawesome/free-regular-svg-icons";
+import style from "./style.module.css";
 
 type EditCardProps = {
   content: ContentType;
@@ -32,6 +33,7 @@ export const EditMode: FC<EditCardProps> = ({
 
       <div>
         <textarea
+          className={style.textArea}
           value={editContent}
           onChange={(event) => {
             setEditContent(event.target.value);
