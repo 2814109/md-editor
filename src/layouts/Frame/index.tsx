@@ -2,7 +2,7 @@ import { FC, ReactNode } from "react";
 
 import { ContentType } from "~/types";
 import style from "./style.module.css";
-import { Spacer } from "~/components/atoms/Spacer";
+import { Spacer } from "~/components/atoms/spacer";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 type Props = {

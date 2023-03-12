@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { ContentType } from "~/types";
-import { FileExport } from "~/components/atoms/button/FileExport/index";
+import { FileExport } from "~/components/atoms/icon/FileExportIcon/index";
 type Props = {
   contents: ContentType[];
 };

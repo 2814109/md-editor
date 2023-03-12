@@ -1,6 +1,6 @@
 import { markdownSelector } from "~/recoil/selectors/markdown/markdownSelector";
 import { useSetRecoilState } from "recoil";
-import { FileImport } from "~/components/atoms/button/FileImport";
+import { FileImport } from "~/components/atoms/icon/FileImportIcon";
 import style from "./style.module.css";
 
 export const Header = (): JSX.Element => {

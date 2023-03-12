@@ -1,9 +1,6 @@
 import { DispatchWithoutAction, FC } from "react";
 import ReactMarkdown from "react-markdown";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
+import { EditCardIcon } from "~/components/atoms/icon/EditCardIcon";
 
 type DisplayCardProps = {
   toggleIsEdit: DispatchWithoutAction;
@@ -15,14 +12,7 @@ export const DisplayMode: FC<DisplayCardProps> = ({
 }) => {
   return (
     <div>
-      <i
-        onClick={() => {
-          toggleIsEdit();
-        }}
-      >
-        <FontAwesomeIcon icon={faPenToSquare} />
-      </i>
-
+      <EditCardIcon toggleIsEdit={toggleIsEdit} />
       <ReactMarkdown children={contentMarkdown} />
     </div>
   );
