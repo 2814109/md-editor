@@ -1,6 +1,7 @@
 import { DispatchWithoutAction, FC } from "react";
 import ReactMarkdown from "react-markdown";
 import { EditCardIcon } from "~/components/atoms/icon/EditCardIcon";
+import remarkGfm from "remark-gfm";
 
 type DisplayCardProps = {
   toggleIsEdit: DispatchWithoutAction;
@@ -13,7 +14,7 @@ export const DisplayMode: FC<DisplayCardProps> = ({
   return (
     <div>
       <EditCardIcon toggleIsEdit={toggleIsEdit} />
-      <ReactMarkdown children={contentMarkdown} />
+      <ReactMarkdown children={contentMarkdown} remarkPlugins={[remarkGfm]} />
     </div>
   );
 };

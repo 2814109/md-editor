@@ -8,6 +8,8 @@ import { contentReducer } from "./libs/reducer/contentReducer";
 import style from "./index.module.css";
 import ReactMarkdown from "react-markdown";
 import { Section } from "./layouts/Section";
+import remarkGfm from "remark-gfm";
+
 function App() {
   const [markdown] = useRecoilState(MarkdownState);
   const [contents, dispatch] = useReducer(contentReducer, []);
@@ -33,6 +35,7 @@ function App() {
               <div className={style.outputContent}>
                 <ReactMarkdown
                   children={contents.map(({ content }) => content).join("\n")}
+                  remarkPlugins={[remarkGfm]}
                 />
               </div>
             )}
