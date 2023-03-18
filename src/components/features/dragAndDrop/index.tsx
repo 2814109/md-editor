@@ -1,4 +1,4 @@
-import React, { Dispatch, FC, useRef } from "react";
+import React, { DragEvent, Dispatch, FC, useRef } from "react";
 import { CardSection } from "../card/index";
 import { getElementIndex } from "~/libs/feature/dragAndDrop/getElementIndex";
 import { PositionType, ContentType } from "~/types";
@@ -31,15 +31,15 @@ export const useDragComponents = ({ contents, dispatch }: Props) => {
     point: null,
   });
 
-  const dragOver = (event: React.DragEvent) => {
+  const dragOver = (event: DragEvent) => {
     handleDragOver(event, beDraggedObjectState);
   };
 
-  const dragStart = (event: React.DragEvent) => {
+  const dragStart = (event: DragEvent) => {
     handleDragStart(event, draggingObjectState);
   };
 
-  const handleDrop = (event: React.DragEvent) => {
+  const handleDrop = (event: DragEvent) => {
     const hoveredElementPrimaryKey: string | null =
       event.currentTarget.getAttribute("primary-key");
     const draggingElementPrimaryKey: string | null =
@@ -68,20 +68,13 @@ export const useDragComponents = ({ contents, dispatch }: Props) => {
     <div className={style.ContentAreaContainer}>
       {contents?.map((contentObject) => {
         return (
-          <div
-            primary-key={contentObject.id}
-            className="DragItem"
-            key={contentObject.id}
-            draggable={true}
-            onDrop={handleDrop}
-            onDragStart={dragStart}
-            onDragOver={dragOver}
-          >
-            <CardSection
-              content={contentObject}
-              updateContents={updateContents}
-            />
-          </div>
+          <CardSection
+            content={contentObject}
+            updateContents={updateContents}
+            dragOver={dragOver}
+            dragStart={dragStart}
+            handleDrop={handleDrop}
+          />
         );
       })}
     </div>
