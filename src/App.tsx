@@ -9,6 +9,7 @@ import style from "./index.module.css";
 import ReactMarkdown from "react-markdown";
 import { Section } from "./layouts/Section";
 import remarkGfm from "remark-gfm";
+import { Spacer } from "./components/atoms/Spacer";
 
 function App() {
   const [markdown] = useRecoilState(MarkdownState);
@@ -26,6 +27,8 @@ function App() {
   return (
     <div className={style.root}>
       <Frame contents={contents}>
+        <Spacer size={90} />
+
         <MainContent>
           <Section>
             <DragAndDropArea />
