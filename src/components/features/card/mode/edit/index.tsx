@@ -21,21 +21,20 @@ export const EditMode: FC<EditCardProps> = ({
     updateContents({ id: content.id, content: editContent });
 
   return (
-    <div>
-      <SaveCardIcon
-        updateContents={handleUpdateContents}
-        toggleIsEdit={toggleIsEdit}
-      />
-      <div>
-        <Spacer size={8} />
-        <textarea
-          className={style.textArea}
-          value={editContent}
-          onChange={(event) => {
-            setEditContent(event.target.value);
-          }}
+    <div className={style.wrapper}>
+      <div className={style.iconPosition}>
+        <SaveCardIcon
+          updateContents={handleUpdateContents}
+          toggleIsEdit={toggleIsEdit}
         />
       </div>
+      <textarea
+        className={style.textArea}
+        value={editContent}
+        onChange={(event) => {
+          setEditContent(event.target.value);
+        }}
+      />
     </div>
   );
 };
