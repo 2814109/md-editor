@@ -14,3 +14,22 @@ body {
   box-sizing: border-box;
   border-radius: 8px;
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+tr,
+td {
+  border: 1px solid #555;
+  padding: 5px;
+}
+th {
+  border: 1px solid #555;
+}
+
+blockquote {
+  padding: 0 1em;
+  color: #6a737d;
+  border-left: 0.25em solid #dfe2e5;
+}
