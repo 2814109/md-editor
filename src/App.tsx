@@ -31,7 +31,7 @@ function App() {
             <DragAndDropArea />
           </Section>
           <Section>
-            {contents.length > 0 && (
+            {contents?.length > 0 && (
               <div className={style.outputContent}>
                 <ReactMarkdown
                   children={contents.map(({ content }) => content).join("\n")}
