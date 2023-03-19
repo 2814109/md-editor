@@ -1,14 +1,14 @@
 body {
   margin: initial;
-  background-color: #e2fac7;
+  background-color: #eee;
 }
 .root {
-  background-color: #e2fac7;
+  background-color: #eee;
 }
 
 .outputContent {
   padding: 8px 32px;
-  background-color: #bcf47c;
+  background-color: #e0e0e0;
   height: 100%;
   box-sizing: border-box;
   border-radius: 8px;
