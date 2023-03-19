@@ -48,7 +48,7 @@ export const useDragComponents = ({ contents, dispatch }: Props) => {
       contents,
       hoveredElementPrimaryKey
     );
-    const draggingElementIndex = getElementIndex(
+    const draggingElementIndex: number = getElementIndex(
       contents,
       draggingElementPrimaryKey
     );
