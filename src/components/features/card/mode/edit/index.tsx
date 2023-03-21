@@ -2,7 +2,7 @@ import { Dispatch, DispatchWithoutAction, FC, useState } from "react";
 import { ContentType } from "~/types";
 import style from "./style.module.css";
 import { SaveCardIcon } from "~/components/atoms/icon/SaveCardIcon";
-import { Spacer } from "~/components/atoms/Spacer/index";
+import { isIncludeTag } from "~/libs/reducer/presentation/isIncludeTag";
 
 type EditCardProps = {
   content: ContentType;
@@ -17,9 +17,11 @@ export const EditMode: FC<EditCardProps> = ({
 }) => {
   const [editContent, setEditContent] = useState<string>(content.content);
 
-  const handleUpdateContents = () =>
-    updateContents({ id: content.id, content: editContent });
-
+  const handleUpdateContents = () => {
+    isIncludeTag(editContent)
+      ? updateContents({ id: content.id, content: editContent })
+      : window.alert("The first line must have one to two # symbols");
+  };
   return (
     <div className={style.wrapper}>
       <div className={style.iconPosition}>

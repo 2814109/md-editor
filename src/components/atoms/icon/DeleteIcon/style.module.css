@@ -1,0 +1,13 @@
+.icon {
+  cursor: pointer;
+  font-size: 24px;
+  color: rgb(244, 101, 101);
+  filter: invert();
+}
+
+.container {
+  cursor: pointer;
+  display: flex;
+  height: 100%;
+  align-items: center;
+}

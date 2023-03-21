@@ -24,6 +24,16 @@ export const useDragComponents = ({ contents, dispatch }: Props) => {
     });
   };
 
+  const deleteContents = (content: ContentType) => {
+    dispatch({
+      type: "set_state",
+      payload: contents
+        .filter(({ id }) => id !== content.id)
+        .map(({ content }) => content)
+        .join("\n"),
+    });
+  };
+
   const draggingObjectState = useRef<PositionType>({
     point: null,
   });
@@ -71,6 +81,7 @@ export const useDragComponents = ({ contents, dispatch }: Props) => {
           <CardSection
             content={contentObject}
             updateContents={updateContents}
+            deleteContents={deleteContents}
             dragOver={dragOver}
             dragStart={dragStart}
             handleDrop={handleDrop}

@@ -6,9 +6,11 @@ import { Card } from "~/components/atoms/card";
 import style from "./style.module.css";
 import { DraggableIcon } from "~/components/atoms/icon/DraggableIcon";
 import { Spacer } from "~/components/atoms/Spacer";
+import { DeleteIcon } from "~/components/atoms/icon/DeleteIcon";
 type Props = {
   content: ContentType;
   updateContents: Dispatch<ContentType>;
+  deleteContents: Dispatch<ContentType>;
   dragOver: Dispatch<DragEvent>;
   dragStart: Dispatch<DragEvent>;
   handleDrop: Dispatch<DragEvent>;
@@ -17,6 +19,7 @@ type Props = {
 export const CardSection: FC<Props> = ({
   content,
   updateContents,
+  deleteContents,
   handleDrop,
   dragStart,
   dragOver,
@@ -24,13 +27,18 @@ export const CardSection: FC<Props> = ({
   const [isEdit, toggleIsEdit] = useReducer((state) => {
     return !state;
   }, false);
+  const handleDelete = () => {
+    content.content.length === 0
+      ? updateContents({ id: content.id, content: "" })
+      : deleteContents(content);
+  };
 
   return (
     <>
       {isEdit || content.content.length === 0 ? (
-        <div className={style.cardSection}>
+        <div className={style.editCardSection}>
           {/* substitute DraggableIcon */}
-          <Spacer horizontal size={19} />
+          <DeleteIcon handleDelete={handleDelete} />
           <Spacer horizontal size={12} />
           <Card>
             <EditMode

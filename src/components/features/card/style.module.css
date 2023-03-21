@@ -8,3 +8,9 @@
 .draggableCard:active {
   cursor: grabbing;
 }
+
+.editCardSection {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
