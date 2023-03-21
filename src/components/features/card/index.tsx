@@ -28,33 +28,37 @@ export const CardSection: FC<Props> = ({
   return (
     <>
       {isEdit || content.content.length === 0 ? (
-        //   Edit Mode
-        <Card>
-          <EditMode
-            updateContents={updateContents}
-            toggleIsEdit={toggleIsEdit}
-            content={content}
-          />
-        </Card>
-      ) : (
-        <div className={style.draggableCard}>
-          <DraggableIcon />
-          <Spacer horizontal size={24} />
+        <div className={style.cardSection}>
+          {/* substitute DraggableIcon */}
+          <Spacer horizontal size={19} />
+          <Spacer horizontal size={12} />
           <Card>
-            <div
-              primary-key={content.id}
-              key={content.id}
-              draggable={true}
-              onDrop={handleDrop}
-              onDragStart={dragStart}
-              onDragOver={dragOver}
-            >
+            <EditMode
+              updateContents={updateContents}
+              toggleIsEdit={toggleIsEdit}
+              content={content}
+            />
+          </Card>
+        </div>
+      ) : (
+        <div
+          primary-key={content.id}
+          key={content.id}
+          draggable={true}
+          onDrop={handleDrop}
+          onDragStart={dragStart}
+          onDragOver={dragOver}
+        >
+          <div className={style.cardSection}>
+            <DraggableIcon />
+            <Spacer horizontal size={12} />
+            <Card>
               <DisplayMode
                 toggleIsEdit={toggleIsEdit}
                 contentMarkdown={content.content}
               />
-            </div>
-          </Card>
+            </Card>
+          </div>
         </div>
       )}
     </>
