@@ -2,7 +2,7 @@ import { splitByTag } from "./splitByTag";
 import { LanguageKey } from "~/types/figurative/LanguageType";
 import { languageAndReadmeMap } from "~/constants/languageAndReadmeMap";
 
-export const changeDefaultLanguage = (languageKey?: LanguageKey) => {
+export const changeTemplateLanguage = (languageKey?: LanguageKey) => {
   if (languageKey === undefined) {
     throw new Error("language key is undefined");
   }

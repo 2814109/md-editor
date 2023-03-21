@@ -28,7 +28,7 @@ export const App = () => {
   };
 
   const handleChangeLanguage = (languageKey: LanguageKey) => {
-    dispatch({ type: "change_language", languageKey: languageKey });
+    dispatch({ type: "change_template_language", languageKey: languageKey });
     scrollToTop();
   };
 

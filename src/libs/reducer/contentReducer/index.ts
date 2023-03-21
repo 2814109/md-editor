@@ -2,7 +2,7 @@ import { CONTENT_ACTION, ContentType } from "~/types";
 import { makeContents } from "./makeContents";
 import { addContents } from "./addContents";
 import { Reducer } from "react";
-import { changeDefaultLanguage } from "./changeDefalutLanguage";
+import { changeTemplateLanguage } from "./changeDefalutLanguage";
 import { itinializeContents } from "./initializeContents";
 export const contentReducer: Reducer<ContentType[], CONTENT_ACTION> = (
   state,
@@ -15,8 +15,8 @@ export const contentReducer: Reducer<ContentType[], CONTENT_ACTION> = (
     case "add_state":
       return addContents(state.map(({ content }) => content).join("\n"));
 
-    case "change_language":
-      return changeDefaultLanguage(action?.languageKey);
+    case "change_template_language":
+      return changeTemplateLanguage(action?.languageKey);
 
     case "initialize_state":
       return itinializeContents();
