@@ -1,0 +1,6 @@
+.tabBarContainer {
+  padding: 12px 24px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 24px;
+}

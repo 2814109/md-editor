@@ -4,6 +4,7 @@ body {
 }
 .root {
   background-color: #eee;
+  filter: invert();
 }
 
 .outputContent {

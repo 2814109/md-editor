@@ -1,0 +1,12 @@
+.headerWrapper {
+  padding: 0px 24px;
+  display: flex;
+  align-items: center;
+  color: #292929;
+  height: 64px;
+}
+
+.headerWrapper h1 {
+  all: unset;
+  font-size: 26px;
+}
