@@ -1,5 +1,5 @@
 import "github-markdown-css/github-markdown.css";
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useRef } from "react";
 import { useRecoilState } from "recoil";
 import { useDragComponents } from "./components/features/dragAndDrop";
 import { Frame } from "./layouts/Frame";
@@ -15,7 +15,7 @@ import { Spacer } from "./components/atoms/Spacer";
 function App() {
   const [markdown] = useRecoilState(MarkdownState);
   const [contents, dispatch] = useReducer(contentReducer, []);
-
+  const bottomRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     dispatch({ type: "set_state", payload: markdown });
   }, [markdown]);
@@ -24,37 +24,41 @@ function App() {
     contents,
     dispatch,
   });
-  const handleAddSection = () => {
-    dispatch({
+  const handleAddSection = async () => {
+    await dispatch({
       type: "set_state",
       payload: contents.map(({ content }) => content).join("\n") + "# \n",
     });
+    bottomRef?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
-    <div className={style.root}>
-      <Frame contents={contents} handleAddSection={handleAddSection}>
-        <Spacer size={90} />
+    <>
+      <div className={style.root}>
+        <Frame contents={contents} handleAddSection={handleAddSection}>
+          <Spacer size={90} />
 
-        <MainContent>
-          <Section>
-            <DragAndDropArea />
-          </Section>
-          <Section>
-            {contents?.length > 0 && (
-              <div className={`markdown-body ${style.outputContent}`}>
-                <span>Preview</span>
-                <ReactMarkdown
-                  children={contents.map(({ content }) => content).join("\n")}
-                  remarkPlugins={[remarkGfm]}
-                />
-                <Spacer size={16} />
-              </div>
-            )}
-          </Section>
-        </MainContent>
-      </Frame>
-    </div>
+          <MainContent>
+            <Section>
+              <DragAndDropArea />
+            </Section>
+            <Section>
+              {contents?.length > 0 && (
+                <div className={`markdown-body ${style.outputContent}`}>
+                  <span>Preview</span>
+                  <ReactMarkdown
+                    children={contents.map(({ content }) => content).join("\n")}
+                    remarkPlugins={[remarkGfm]}
+                  />
+                  <Spacer size={16} />
+                </div>
+              )}
+            </Section>
+          </MainContent>
+        </Frame>
+      </div>
+      <div ref={bottomRef} />
+    </>
   );
 }
 
