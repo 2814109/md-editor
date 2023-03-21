@@ -4,6 +4,8 @@ import { DisplayMode } from "./mode/display";
 import { ContentType } from "~/types";
 import { Card } from "~/components/atoms/card";
 import style from "./style.module.css";
+import { DraggableIcon } from "~/components/atoms/icon/DraggableIcon";
+import { Spacer } from "~/components/atoms/Spacer";
 type Props = {
   content: ContentType;
   updateContents: Dispatch<ContentType>;
@@ -24,30 +26,37 @@ export const CardSection: FC<Props> = ({
   }, false);
 
   return (
-    <Card>
+    <>
       {isEdit || content.content.length === 0 ? (
         //   Edit Mode
-        <EditMode
-          updateContents={updateContents}
-          toggleIsEdit={toggleIsEdit}
-          content={content}
-        />
-      ) : (
-        <div
-          primary-key={content.id}
-          className={`DragItem ${style.draggableCard}`}
-          key={content.id}
-          draggable={true}
-          onDrop={handleDrop}
-          onDragStart={dragStart}
-          onDragOver={dragOver}
-        >
-          <DisplayMode
+        <Card>
+          <EditMode
+            updateContents={updateContents}
             toggleIsEdit={toggleIsEdit}
-            contentMarkdown={content.content}
+            content={content}
           />
+        </Card>
+      ) : (
+        <div className={style.draggableCard}>
+          <DraggableIcon />
+          <Spacer horizontal size={24} />
+          <Card>
+            <div
+              primary-key={content.id}
+              key={content.id}
+              draggable={true}
+              onDrop={handleDrop}
+              onDragStart={dragStart}
+              onDragOver={dragOver}
+            >
+              <DisplayMode
+                toggleIsEdit={toggleIsEdit}
+                contentMarkdown={content.content}
+              />
+            </div>
+          </Card>
         </div>
       )}
-    </Card>
+    </>
   );
 };

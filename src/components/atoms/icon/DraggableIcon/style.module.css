@@ -1,0 +1,11 @@
+.fileExportIcon {
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.container {
+  cursor: pointer;
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
