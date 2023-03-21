@@ -18,9 +18,7 @@ export const Frame: FC<Props> = ({ children, contents, handleAddSection }) => {
       <div className={style.stickyContainer}>
         <TabBar contents={contents} handleAddSection={handleAddSection} />
       </div>
-      <Spacer size={24} />
       <div className={style.contentContainer}>{children}</div>
-      <Spacer size={24} />
     </>
   );
 };
