@@ -36,10 +36,12 @@ function App() {
           <Section>
             {contents?.length > 0 && (
               <div className={style.outputContent}>
+                <span>Preview</span>
                 <ReactMarkdown
                   children={contents.map(({ content }) => content).join("\n")}
                   remarkPlugins={[remarkGfm]}
                 />
+                <Spacer size={16} />
               </div>
             )}
           </Section>

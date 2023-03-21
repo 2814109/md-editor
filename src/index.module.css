@@ -8,11 +8,12 @@ body {
 }
 
 .outputContent {
-  padding: 8px 32px;
-  background-color: #e0e0e0;
-  height: 100%;
+  padding: 16px 32px;
+  background: linear-gradient(145deg, #f0f0f0, #777676);
+  box-shadow: 5px 5px 10px #5a5a5a, -5px -5px 10px #ffffff;
   box-sizing: border-box;
   border-radius: 8px;
+  filter: invert();
 }
 
 table {
