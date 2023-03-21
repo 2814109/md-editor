@@ -9,28 +9,8 @@ body {
 
 .outputContent {
   padding: 16px 32px;
-  background: linear-gradient(145deg, #f0f0f0, #777676);
-  box-shadow: 5px 5px 10px #5a5a5a, -5px -5px 10px #ffffff;
+  background: linear-gradient(145deg, #545252, #b4b0b0);
+  box-shadow: 5px 5px 10px #545252, -5px -5px 10px #b4b0b0;
   box-sizing: border-box;
   border-radius: 8px;
-  filter: invert();
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-tr,
-td {
-  border: 1px solid #555;
-  padding: 5px;
-}
-th {
-  border: 1px solid #555;
-}
-
-blockquote {
-  padding: 0 1em;
-  color: #6a737d;
-  border-left: 0.25em solid #dfe2e5;
 }

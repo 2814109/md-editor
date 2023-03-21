@@ -1,6 +1,7 @@
 .wrapper {
   position: relative;
   padding: 0px 16px 16px;
+  border-radius: 16px;
 }
 
 .textArea {
@@ -16,6 +17,10 @@
 
 .iconPosition {
   position: absolute;
-  top: -8px;
+  top: 8px;
   right: 16px;
+}
+
+.filterInvert {
+  filter: invert();
 }

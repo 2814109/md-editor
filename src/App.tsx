@@ -1,3 +1,4 @@
+import "github-markdown-css/github-markdown.css";
 import { useEffect, useReducer } from "react";
 import { useRecoilState } from "recoil";
 import { useDragComponents } from "./components/features/dragAndDrop";
@@ -35,7 +36,7 @@ function App() {
           </Section>
           <Section>
             {contents?.length > 0 && (
-              <div className={style.outputContent}>
+              <div className={`markdown-body ${style.outputContent}`}>
                 <span>Preview</span>
                 <ReactMarkdown
                   children={contents.map(({ content }) => content).join("\n")}

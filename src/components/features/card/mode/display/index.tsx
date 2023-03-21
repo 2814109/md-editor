@@ -13,7 +13,7 @@ export const DisplayMode: FC<DisplayCardProps> = ({
   contentMarkdown,
 }) => {
   return (
-    <div className={style.wrapper}>
+    <div className={`${style.wrapper} markdown-body ${style.filterInvert}`}>
       <div className={style.iconPosition}>
         <EditCardIcon toggleIsEdit={toggleIsEdit} />
       </div>
