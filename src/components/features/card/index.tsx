@@ -3,6 +3,7 @@ import { EditMode } from "./mode/edit/index";
 import { DisplayMode } from "./mode/display";
 import { ContentType } from "~/types";
 import { Card } from "~/components/atoms/card";
+import style from "./style.module.css";
 type Props = {
   content: ContentType;
   updateContents: Dispatch<ContentType>;
@@ -34,7 +35,7 @@ export const CardSection: FC<Props> = ({
       ) : (
         <div
           primary-key={content.id}
-          className="DragItem"
+          className={`DragItem ${style.draggableCard}`}
           key={content.id}
           draggable={true}
           onDrop={handleDrop}

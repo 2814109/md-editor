@@ -1,0 +1,7 @@
+.draggableCard {
+  cursor: grab;
+}
+
+.draggableCard:active {
+  cursor: grabbing;
+}
