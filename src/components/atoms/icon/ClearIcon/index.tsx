@@ -10,7 +10,7 @@ export const ClearIcon: FC = () => {
   const set = useSetRecoilState(markdownSelector);
 
   const handleClear = () => {
-    set(() => " ");
+    set(() => "");
   };
 
   return (

@@ -3,7 +3,7 @@ import { makeContents } from "./makeContents";
 import { addContents } from "./addContents";
 import { Reducer } from "react";
 import { changeDefaultLanguage } from "./changeDefalutLanguage";
-
+import { itinializeContents } from "./initializeContents";
 export const contentReducer: Reducer<ContentType[], CONTENT_ACTION> = (
   state,
   action
@@ -17,5 +17,8 @@ export const contentReducer: Reducer<ContentType[], CONTENT_ACTION> = (
 
     case "change_language":
       return changeDefaultLanguage(action?.languageKey);
+
+    case "initialize_state":
+      return itinializeContents();
   }
 };

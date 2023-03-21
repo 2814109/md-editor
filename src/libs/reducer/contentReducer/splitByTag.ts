@@ -1,8 +1,7 @@
+import { patternTitle, patternSection } from "~/libs/common/patterns";
+
 export const splitByTag = (content: string) => {
   const splitCotent = content.split("\n");
-
-  const patternTitle = /^\#{1}(?=\s)(.*)$/;
-  const patternSection = /^\#{2}(?=\s)(.*)$/;
 
   const result: string[][] = [];
   for (let row of splitCotent) {
