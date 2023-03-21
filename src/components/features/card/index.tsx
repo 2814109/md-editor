@@ -24,7 +24,7 @@ export const CardSection: FC<Props> = ({
 
   return (
     <Card>
-      {isEdit || content.content.length === 3 ? (
+      {isEdit || content.content.length === 0 ? (
         //   Edit Mode
         <EditMode
           updateContents={updateContents}

@@ -26,8 +26,8 @@ function App() {
   });
   const handleAddSection = async () => {
     await dispatch({
-      type: "set_state",
-      payload: contents.map(({ content }) => content).join("\n") + "# \n",
+      type: "add_state",
+      payload: contents.map(({ content }) => content).join("\n"),
     });
     bottomRef?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
@@ -36,8 +36,7 @@ function App() {
     <>
       <div className={style.root}>
         <Frame contents={contents} handleAddSection={handleAddSection}>
-          <Spacer size={90} />
-
+          <Spacer size={24} />
           <MainContent>
             <Section>
               <DragAndDropArea />
