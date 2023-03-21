@@ -13,7 +13,7 @@ import { PreviewSection } from "./components/features/previewSection";
 import { BottomAddSection } from "./components/atoms/icon/BottomAddSectionIcon";
 import { makeContents } from "./libs/reducer/contentReducer/makeContents";
 import { LanguageKey } from "./types/figurative/LanguageType";
-
+import { scrollIntoViewCurrentRef } from "~/libs/common/scrollIntoViewCurrentRef";
 export const App = () => {
   const [markdown] = useRecoilState(MarkdownState);
   const initializeReducer = makeContents(markdown);
@@ -29,17 +29,14 @@ export const App = () => {
     await dispatch({
       type: "add_state",
     });
-    bottomRef?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    scrollIntoViewCurrentRef(bottomRef);
   };
 
   const handleChangeLanguage = (languageKey: LanguageKey) => {
-    console.log(languageKey);
     dispatch({ type: "change_language", languageKey: languageKey });
 
-    topRef?.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
+    scrollIntoViewCurrentRef(topRef);
   };
 
   return (
