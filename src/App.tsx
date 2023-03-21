@@ -43,7 +43,7 @@ function App() {
             </Section>
             <Section>
               {contents?.length > 0 && (
-                <div className={`markdown-body ${style.outputContent}`}>
+                <div className={`markdown-body ${style.previewContent}`}>
                   <span>Preview</span>
                   <ReactMarkdown
                     children={contents.map(({ content }) => content).join("\n")}

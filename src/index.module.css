@@ -7,7 +7,7 @@ body {
   filter: invert();
 }
 
-.outputContent {
+.previewContent {
   padding: 16px 32px;
   background: linear-gradient(145deg, #4f4e4e, #323232);
   box-shadow: 5px 5px 10px #545252, -5px -5px 10px #b4b0b0;
