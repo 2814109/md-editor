@@ -9,8 +9,8 @@ export const useContents = () => {
   const initializeReducer = makeContents(markdown);
 
   const [contents, dispatch] = useReducer(contentReducer, initializeReducer);
-
   useEffect(() => {
+    console.log("rendering");
     markdown.length > 0
       ? dispatch({
           type: "set_state",
@@ -19,6 +19,8 @@ export const useContents = () => {
       : dispatch({
           type: "initialize_state",
         });
+
+    return () => console.log("unmounting...");
   }, [markdown]);
 
   return { contents, dispatch };

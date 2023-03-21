@@ -10,8 +10,30 @@ import { BottomAddSection } from "./components/atoms/icon/BottomAddSectionIcon";
 import { LanguageKey } from "./types/figurative/LanguageType";
 import { useContents } from "./hooks/useContent";
 import { useViewControll } from "./hooks/useViewControll";
+
+import { useEffect, useReducer } from "react";
+import { useRecoilValue } from "recoil";
+import { contentReducer } from "~/libs/reducer/contentReducer";
+import { makeContents } from "~/libs/reducer/contentReducer/makeContents";
+import { markdownSelector } from "~/recoil/selectors/markdown/markdownSelector";
+
 export const App = () => {
-  const { contents, dispatch } = useContents();
+  // const { contents, dispatch } = useContents();
+
+  const markdown = useRecoilValue(markdownSelector);
+  const initializeReducer = makeContents(markdown);
+
+  const [contents, dispatch] = useReducer(contentReducer, initializeReducer);
+  useEffect(() => {
+    markdown.length > 0
+      ? dispatch({
+          type: "set_state",
+          payload: markdown,
+        })
+      : dispatch({
+          type: "initialize_state",
+        });
+  }, [markdown]);
   const { TopAnchor, BottomAnchor, scrollToTop, scrollToBottom } =
     useViewControll();
 
