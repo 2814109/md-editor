@@ -7,6 +7,8 @@ import { AddSection } from "~/components/atoms/icon/AddSectionIcon";
 import { Dispatch, DispatchWithoutAction } from "react";
 import { LanguageSelected } from "~/components/features/language";
 import { LanguageKey } from "~/types/figurative/LanguageType";
+import { TemplateSection } from "~/components/atoms/icon/TemplateIcon";
+import { ClearIcon } from "~/components/atoms/icon/ClearIcon";
 
 type TabBarProps = {
   contents: ContentType[];
@@ -25,8 +27,10 @@ export const TabBar = ({
     <div className={style.tabBarContainer}>
       <div className={style.startContent}>
         <AddSection handleAddSection={handleAddSection} />
+        <TemplateSection handleChangeLanguage={handleChangeLanguage} />
         <FileImport handleClick={onFileInputChange} />
         <DownloadButton />
+        <ClearIcon />
       </div>
 
       <div className={style.endContent}>

@@ -11,7 +11,7 @@ export const FileImport: FC<Props> = ({ handleClick }) => (
   <TabItem>
     <label className={style.container}>
       <i>
-        <FontAwesomeIcon className={style.fileImportIcon} icon={faFileImport} />
+        <FontAwesomeIcon className={style.icon} icon={faFileImport} />
       </i>
       <Spacer horizontal size={4} />
       <div>Import</div>

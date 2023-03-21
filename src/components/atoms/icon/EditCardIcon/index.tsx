@@ -6,16 +6,14 @@ import style from "./style.module.css";
 type EditCardIconProps = {
   toggleIsEdit: DispatchWithoutAction;
 };
-export const EditCardIcon = ({
-  toggleIsEdit,
-}: EditCardIconProps): JSX.Element => (
+export const EditCardIcon = ({ toggleIsEdit }: EditCardIconProps): JSX.Element => (
   <IconContainer>
     <i
       onClick={() => {
         toggleIsEdit();
       }}
     >
-      <FontAwesomeIcon className={style.editCardIcon} icon={faPenToSquare} />
+      <FontAwesomeIcon className={style.icon} icon={faPenToSquare} />
     </i>
   </IconContainer>
 );

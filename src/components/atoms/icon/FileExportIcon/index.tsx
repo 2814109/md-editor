@@ -11,7 +11,7 @@ export const FileExport: FC<Props> = ({ handleMarkdownDownload }) => (
   <TabItem>
     <label className={style.container}>
       <i>
-        <FontAwesomeIcon className={style.fileExportIcon} icon={faDownload} />
+        <FontAwesomeIcon className={style.icon} icon={faDownload} />
       </i>
       <Spacer horizontal size={4} />
       <div>Export</div>

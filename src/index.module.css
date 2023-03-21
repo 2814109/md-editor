@@ -5,4 +5,5 @@ body {
 .root {
   background-color: #eee;
   filter: invert();
+  min-height: 100vh;
 }

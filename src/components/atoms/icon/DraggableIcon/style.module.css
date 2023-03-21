@@ -1,10 +1,10 @@
-.fileExportIcon {
-  cursor: pointer;
+.icon {
+  cursor: inherit;
   font-size: 24px;
 }
 
 .container {
-  cursor: pointer;
+  cursor: inherit;
   display: flex;
   height: 100%;
   align-items: center;

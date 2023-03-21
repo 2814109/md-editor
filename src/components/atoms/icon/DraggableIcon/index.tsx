@@ -7,7 +7,7 @@ import { Spacer } from "../../Spacer";
 export const DraggableIcon: FC = () => (
   <label className={style.container}>
     <i>
-      <FontAwesomeIcon className={style.fileExportIcon} icon={faGripVertical} />
+      <FontAwesomeIcon className={style.icon} icon={faGripVertical} />
     </i>
     <Spacer horizontal size={4} />
   </label>

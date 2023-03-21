@@ -1,10 +1,10 @@
 import "github-markdown-css/github-markdown-dark.css";
-import { useReducer, useRef } from "react";
-import { useRecoilState } from "recoil";
+import { useEffect, useReducer, useRef } from "react";
+import { useRecoilValue } from "recoil";
 import { useDragComponents } from "./components/features/dragAndDrop";
 import { Frame } from "./layouts/Frame";
 import { MainContent } from "./layouts/MainContent";
-import { MarkdownState } from "./recoil/atoms/markdown";
+import { markdownSelector } from "./recoil/selectors/markdown/markdownSelector";
 import { contentReducer } from "./libs/reducer/contentReducer";
 import style from "./index.module.css";
 import { Section } from "./layouts/Section";
@@ -15,10 +15,19 @@ import { makeContents } from "./libs/reducer/contentReducer/makeContents";
 import { LanguageKey } from "./types/figurative/LanguageType";
 import { scrollIntoViewCurrentRef } from "~/libs/common/scrollIntoViewCurrentRef";
 export const App = () => {
-  const [markdown] = useRecoilState(MarkdownState);
+  const markdown = useRecoilValue(markdownSelector);
   const initializeReducer = makeContents(markdown);
+
   const [contents, dispatch] = useReducer(contentReducer, initializeReducer);
+
+  useEffect(() => {
+    dispatch({
+      type: "set_state",
+      payload: markdown,
+    });
+  }, [markdown]);
   const bottomRef = useRef<HTMLDivElement>(null);
+
   const topRef = useRef<HTMLDivElement>(null);
 
   const { DragAndDropArea } = useDragComponents({
@@ -29,7 +38,6 @@ export const App = () => {
     await dispatch({
       type: "add_state",
     });
-
     scrollIntoViewCurrentRef(bottomRef);
   };
 
@@ -53,7 +61,9 @@ export const App = () => {
             <Section>
               <DragAndDropArea />
               <Spacer size={24} />
-              <BottomAddSection handleAddSection={handleAddSection} />
+              {contents.length > 0 && (
+                <BottomAddSection handleAddSection={handleAddSection} />
+              )}
             </Section>
             <Section>
               <PreviewSection contents={contents} />
