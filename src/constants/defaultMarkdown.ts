@@ -1,33 +1,5 @@
-export const defaultMarkdown = `# 見出し 1
+export const defaultREADMEJapanese =
+  "# プロジェクト名\n\nプロジェクトの簡潔な説明をここに入力します。\n\n## インストール\n\nこのプロジェクトをインストールするには、以下の手順を実行してください。\n\n```bash\ngit clone https://github.com/username/project.git\ncd project\nnpm install\n```\n\n## 使い方\n\nこのプロジェクトを使うには、以下の手順を実行してください。\n\n```bash\nnpm start\n```\n\n## 貢献\n\nこのプロジェクトに貢献するには、以下の手順を実行してください。\n\n1. フォークする\n2. ブランチを作成する (`git checkout -b feature/AmazingFeature`)\n3. 変更をコミットする (`git commit -m 'Add some AmazingFeature'`)\n4. ブランチにプッシュする (`git push origin feature/AmazingFeature`)\n5. プルリクエストを作成する\n\n## ライセンス\n\nこのプロジェクトはMITライセンスの下でリリースされています。";
 
-## 見出し 2
-
-### 見出し 3
-
-本文中の **太字**、_斜字_ も使うことができます。
-
-- 箇条書き 1
-- 箇条書き 2
-- 箇条書き 3
-
-1. 番号付きリスト 1
-2. 番号付きリスト 2
-3. 番号付きリスト 3
-
-引用も使えます:
-
-> これは引用です。引用は \` >\` を使って表現します。
-
-行末に 2 つのスペースを入れると、  
-改行することもできます。
-
-| 列 1     | 列 2     |
-| -------- | -------- |
-| データ 1 | データ 2 |
-| データ 3 | データ 4 |
-
-\`\`\`
-const onClick = () => {console.log("!");
-\`\`\`
-
-`;
+export const defaultREADMEEnglish =
+  "# Project Name\n\nEnter a brief description of your project here.\n\n## Installation\n\nTo install this project, run the following commands:\n\n```bash\ngit clone https://github.com/username/project.git\ncd project\nnpm install\n```\n\n## Usage\n\nTo use this project, run the following command:\n\n```bash\nnpm start\n```\n\n## Contributing\n\nTo contribute to this project, follow these steps:\n\n1. Fork it\n2. Create a feature branch (`git checkout -b feature/AmazingFeature`)\n3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)\n4. Push to the branch (`git push origin feature/AmazingFeature`)\n5. Open a pull request\n\n## License\n\nThis project is licensed under the MIT License.";

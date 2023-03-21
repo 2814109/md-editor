@@ -48,6 +48,7 @@ export const App = () => {
               <Spacer size={16} />
             </Section>
           </MainContent>
+          <Spacer size={36} />
         </Frame>
       </div>
       <div ref={bottomRef} />
