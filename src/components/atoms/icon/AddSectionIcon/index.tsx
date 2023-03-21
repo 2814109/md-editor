@@ -1,21 +1,21 @@
 import { DispatchWithoutAction, FC } from "react";
-import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { faSquarePlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import style from "./style.module.css";
 import { Spacer } from "../../Spacer";
 import { TabItem } from "../../tabItem";
 type Props = {
-  handleMarkdownDownload: DispatchWithoutAction;
+  handleAddSection: DispatchWithoutAction;
 };
-export const FileExport: FC<Props> = ({ handleMarkdownDownload }) => (
+export const AddSection: FC<Props> = ({ handleAddSection }) => (
   <TabItem>
     <label className={style.container}>
       <i>
-        <FontAwesomeIcon className={style.fileExportIcon} icon={faDownload} />
+        <FontAwesomeIcon className={style.fileExportIcon} icon={faSquarePlus} />
       </i>
       <Spacer horizontal size={4} />
-      <div>Export</div>
-      <button onClick={handleMarkdownDownload} type="button" />
+      <div>Add Section</div>
+      <button onClick={handleAddSection} type="button" />
     </label>
   </TabItem>
 );

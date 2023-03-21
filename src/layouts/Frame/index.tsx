@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { DispatchWithoutAction, FC, ReactNode } from "react";
 
 import { ContentType } from "~/types";
 import style from "./style.module.css";
@@ -8,14 +8,15 @@ import { TabBar } from "./TabBar";
 type Props = {
   children: ReactNode;
   contents: ContentType[];
+  handleAddSection: DispatchWithoutAction;
 };
 
-export const Frame: FC<Props> = ({ children, contents }) => {
+export const Frame: FC<Props> = ({ children, contents, handleAddSection }) => {
   return (
     <>
       <Header />
       <div className={style.stickyContainer}>
-        <TabBar contents={contents} />
+        <TabBar contents={contents} handleAddSection={handleAddSection} />
       </div>
       <Spacer size={24} />
       <div className={style.contentContainer}>{children}</div>

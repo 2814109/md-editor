@@ -24,10 +24,16 @@ function App() {
     contents,
     dispatch,
   });
+  const handleAddSection = () => {
+    dispatch({
+      type: "set_state",
+      payload: contents.map(({ content }) => content).join("\n") + "# \n",
+    });
+  };
 
   return (
     <div className={style.root}>
-      <Frame contents={contents}>
+      <Frame contents={contents} handleAddSection={handleAddSection}>
         <Spacer size={90} />
 
         <MainContent>

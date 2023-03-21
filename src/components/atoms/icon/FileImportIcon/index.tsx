@@ -3,16 +3,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileImport } from "@fortawesome/free-solid-svg-icons";
 import style from "./style.module.css";
 import { Spacer } from "../../Spacer";
+import { TabItem } from "../../tabItem";
 type Props = {
   handleClick: Dispatch<ChangeEvent<HTMLInputElement>>;
 };
 export const FileImport: FC<Props> = ({ handleClick }) => (
-  <label className={style.container}>
-    <div>Import</div>
-    <input type="file" accept=".md" onChange={handleClick} />
-    <Spacer horizontal size={4} />
-    <i>
-      <FontAwesomeIcon className={style.fileImportIcon} icon={faFileImport} />
-    </i>
-  </label>
+  <TabItem>
+    <label className={style.container}>
+      <i>
+        <FontAwesomeIcon className={style.fileImportIcon} icon={faFileImport} />
+      </i>
+      <Spacer horizontal size={4} />
+      <div>Import</div>
+      <input type="file" accept=".md" onChange={handleClick} />
+    </label>
+  </TabItem>
 );
