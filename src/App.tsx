@@ -1,4 +1,4 @@
-import "github-markdown-css/github-markdown.css";
+import "github-markdown-css/github-markdown-dark.css";
 import { useEffect, useReducer, useRef } from "react";
 import { useRecoilState } from "recoil";
 import { useDragComponents } from "./components/features/dragAndDrop";
