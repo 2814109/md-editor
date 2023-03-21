@@ -2,7 +2,7 @@ button[type="button"] {
   display: none;
 }
 
-.fileExportIcon {
+.icon {
   cursor: pointer;
   font-size: 24px;
 }

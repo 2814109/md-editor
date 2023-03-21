@@ -3,7 +3,7 @@ import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import style from "./style.module.css";
 import { Spacer } from "../../Spacer";
-import { TabItem } from "../../tabItem";
+import { TabItem } from "../../../../styles/tabItem";
 type Props = {
   handleAddSection: DispatchWithoutAction;
 };
@@ -11,7 +11,7 @@ export const BottomAddSection: FC<Props> = ({ handleAddSection }) => (
   <TabItem>
     <label className={style.container}>
       <i>
-        <FontAwesomeIcon className={style.fileExportIcon} icon={faCirclePlus} />
+        <FontAwesomeIcon className={style.icon} icon={faCirclePlus} />
       </i>
       <Spacer horizontal size={4} />
       <div>Add Section</div>

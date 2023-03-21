@@ -5,6 +5,7 @@ button[type="button"] {
 .icon {
   cursor: pointer;
   font-size: 24px;
+  transform: scaleX(-1);
 }
 
 .container {

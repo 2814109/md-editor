@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileImport } from "@fortawesome/free-solid-svg-icons";
 import style from "./style.module.css";
 import { Spacer } from "../../Spacer";
-import { TabItem } from "../../tabItem";
+import { TabItem } from "../../../../styles/tabItem";
 type Props = {
   handleClick: Dispatch<ChangeEvent<HTMLInputElement>>;
 };

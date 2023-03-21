@@ -3,7 +3,7 @@ import { faBroom } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import style from "./style.module.css";
 import { Spacer } from "../../Spacer";
-import { TabItem } from "../../tabItem";
+import { TabItem } from "../../../../styles/tabItem";
 import { markdownSelector } from "~/recoil/selectors/markdown/markdownSelector";
 import { useSetRecoilState } from "recoil";
 export const ClearIcon: FC = () => {

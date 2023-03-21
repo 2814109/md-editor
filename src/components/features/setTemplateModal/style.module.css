@@ -1,0 +1,17 @@
+.modalContainer {
+  border-radius: 8px;
+  padding: 24px;
+  color: #292929;
+  background-color: #eee;
+  width: 35vw;
+  height: 35vh;
+}
+
+.modalSelectSection {
+  display: flex;
+  justify-content: center;
+}
+.modalBottomButtonSection {
+  display: flex;
+  justify-content: space-around;
+}

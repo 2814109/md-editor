@@ -9,14 +9,14 @@ type Props = {
   children: ReactNode;
   contents: ContentType[];
   handleAddSection: DispatchWithoutAction;
-  handleChangeLanguage: Dispatch<LanguageKey>;
+  handleChangeTemplateLanguage: Dispatch<LanguageKey>;
 };
 
 export const Frame: FC<Props> = ({
   children,
   contents,
   handleAddSection,
-  handleChangeLanguage,
+  handleChangeTemplateLanguage,
 }) => {
   return (
     <>
@@ -25,7 +25,7 @@ export const Frame: FC<Props> = ({
         <TabBar
           contents={contents}
           handleAddSection={handleAddSection}
-          handleChangeLanguage={handleChangeLanguage}
+          handleChangeTemplateLanguage={handleChangeTemplateLanguage}
         />
       </div>
       <div className={style.contentContainer}>{children}</div>

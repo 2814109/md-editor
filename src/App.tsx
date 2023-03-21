@@ -27,7 +27,7 @@ export const App = () => {
     scrollToBottom();
   };
 
-  const handleChangeLanguage = (languageKey: LanguageKey) => {
+  const handleChangeTemplateLanguage = (languageKey: LanguageKey) => {
     dispatch({ type: "change_template_language", languageKey: languageKey });
     scrollToTop();
   };
@@ -39,7 +39,7 @@ export const App = () => {
         <Frame
           contents={contents}
           handleAddSection={handleAddSection}
-          handleChangeLanguage={handleChangeLanguage}
+          handleChangeTemplateLanguage={handleChangeTemplateLanguage}
         >
           <Spacer size={24} />
           <MainContent>

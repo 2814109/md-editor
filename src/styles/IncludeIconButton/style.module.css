@@ -1,0 +1,10 @@
+.includeIconButton {
+  border: 3px #424040;
+  border-style: solid;
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+
+.includeIconButton :hover {
+  filter: invert();
+}

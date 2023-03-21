@@ -737,6 +737,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"body-scroll-lock@npm:^4.0.0-beta.0":
+  version: 4.0.0-beta.0
+  resolution: "body-scroll-lock@npm:4.0.0-beta.0"
+  checksum: 61d40007fddf64ecc69e9e02ed9d96bb895f88d7da65cea7651081110225de48efa44ffc4acd376ed004788e242a9af12059fec728c096774b49365524ea6f46
+  languageName: node
+  linkType: hard
+
 "brace-expansion@npm:^1.1.7":
   version: 1.1.11
   resolution: "brace-expansion@npm:1.1.11"
@@ -1090,6 +1097,29 @@ __metadata:
   version: 3.0.2
   resolution: "extend@npm:3.0.2"
   checksum: a50a8309ca65ea5d426382ff09f33586527882cf532931cb08ca786ea3146c0553310bda688710ff61d7668eba9f96b923fe1420cdf56a2c3eaf30fcab87b515
+  languageName: node
+  linkType: hard
+
+"focus-trap-react@npm:^10.0.2":
+  version: 10.1.1
+  resolution: "focus-trap-react@npm:10.1.1"
+  dependencies:
+    focus-trap: ^7.4.0
+    tabbable: ^6.1.1
+  peerDependencies:
+    prop-types: ^15.8.1
+    react: ">=16.3.0"
+    react-dom: ">=16.3.0"
+  checksum: 66bf8d9efa0efda77b7dc2591736fa38e2892151362db7543ea81e70187b8d2e25f471a31175eb0596a862ec8c6391c943bc5fbf69cfaaeb61c0ef2aa3e4750c
+  languageName: node
+  linkType: hard
+
+"focus-trap@npm:^7.4.0":
+  version: 7.4.0
+  resolution: "focus-trap@npm:7.4.0"
+  dependencies:
+    tabbable: ^6.1.1
+  checksum: e55d07295f1facf3a82fb7b78713c196f893a82a04ec9a8ab95306a3099ac8fc30dba982651e4fa8a0f3fba623e3120baf419a1c31da3c25223c0bfbece340aa
   languageName: node
   linkType: hard
 
@@ -1515,6 +1545,7 @@ fsevents@~2.3.2:
     github-markdown-css: ^5.2.0
     react: ^18.2.0
     react-dom: ^18.2.0
+    react-hooks-use-modal: ^3.3.1
     react-markdown: ^8.0.5
     recoil: ^0.7.6
     remark-gfm: ^3.0.1
@@ -2323,6 +2354,19 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
+"react-hooks-use-modal@npm:^3.3.1":
+  version: 3.3.1
+  resolution: "react-hooks-use-modal@npm:3.3.1"
+  dependencies:
+    body-scroll-lock: ^4.0.0-beta.0
+    focus-trap-react: ^10.0.2
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 0905a4301966001fbdf4c7fdb4d3e04e34cc963adbcf5ea3d485ca9d804a0b0c09711fa5d0115fb1833b15a76f07b768886d7b5b041db5d4a687ec74cd73b34f
+  languageName: node
+  linkType: hard
+
 "react-is@npm:^16.13.1":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
@@ -2667,6 +2711,13 @@ resolve@^1.22.1:
   version: 1.0.0
   resolution: "supports-preserve-symlinks-flag@npm:1.0.0"
   checksum: 53b1e247e68e05db7b3808b99b892bd36fb096e6fba213a06da7fab22045e97597db425c724f2bbd6c99a3c295e1e73f3e4de78592289f38431049e1277ca0ae
+  languageName: node
+  linkType: hard
+
+"tabbable@npm:^6.1.1":
+  version: 6.1.1
+  resolution: "tabbable@npm:6.1.1"
+  checksum: 348639497262241ce8e0ccb0664ea582a386183107299ee8f27cf7b56bc84f36e09eaf667d3cb4201e789634012a91f7129bcbd49760abe874fbace35b4cf429
   languageName: node
   linkType: hard
 
