@@ -1,6 +1,6 @@
 import { atom } from "recoil";
-import { defaultREADMEEnglish } from "~/constants/defaultMarkdown";
+import { readmeEnglish } from "~/constants/defaultMarkdown/english";
 export const MarkdownState = atom({
   key: "MarkdownState",
-  default: defaultREADMEEnglish,
+  default: readmeEnglish,
 });

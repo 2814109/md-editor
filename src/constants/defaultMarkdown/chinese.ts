@@ -1,0 +1,2 @@
+export const readmeChinese =
+  "# 项目名称\n\n在这里输入项目简要说明。\n\n## 安装\n\n要安装此项目，请执行以下步骤。\n\nbash\ngit clone https://github.com/username/project.git\ncd project\nnpm install\n\n\n## 使用\n\n要使用此项目，请执行以下步骤。\n\nbash\nnpm start\n\n\n## 贡献\n\n要为此项目做出贡献，请执行以下步骤。\n\n1. Fork 项目\n2. 创建分支 (git checkout -b feature/AmazingFeature)\n3. 提交更改 (git commit -m 'Add some AmazingFeature')\n4. 推送到分支 (git push origin feature/AmazingFeature)\n5. 创建拉取请求\n\n## 许可证\n\n此项目以MIT许可证发布。";

@@ -9,4 +9,5 @@
 .headerWrapper h1 {
   all: unset;
   font-size: 26px;
+  font-weight: bold;
 }

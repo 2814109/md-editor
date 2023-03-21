@@ -1,4 +1,4 @@
-import React, { DragEvent, Dispatch, FC, useRef } from "react";
+import { DragEvent, Dispatch, FC, useRef } from "react";
 import { CardSection } from "../card/index";
 import { getElementIndex } from "~/libs/feature/dragAndDrop/getElementIndex";
 import { PositionType, ContentType } from "~/types";

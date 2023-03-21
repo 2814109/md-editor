@@ -1,5 +1,5 @@
 import "github-markdown-css/github-markdown-dark.css";
-import { useEffect, useReducer, useRef } from "react";
+import { useReducer, useRef } from "react";
 import { useRecoilState } from "recoil";
 import { useDragComponents } from "./components/features/dragAndDrop";
 import { Frame } from "./layouts/Frame";
@@ -11,14 +11,15 @@ import { Section } from "./layouts/Section";
 import { Spacer } from "./components/atoms/Spacer";
 import { PreviewSection } from "./components/features/previewSection";
 import { BottomAddSection } from "./components/atoms/icon/BottomAddSectionIcon";
+import { makeContents } from "./libs/reducer/contentReducer/makeContents";
+import { LanguageKey } from "./types/figurative/LanguageType";
 
 export const App = () => {
   const [markdown] = useRecoilState(MarkdownState);
-  const [contents, dispatch] = useReducer(contentReducer, []);
+  const initializeReducer = makeContents(markdown);
+  const [contents, dispatch] = useReducer(contentReducer, initializeReducer);
   const bottomRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    dispatch({ type: "set_state", payload: markdown });
-  }, [markdown]);
+  const topRef = useRef<HTMLDivElement>(null);
 
   const { DragAndDropArea } = useDragComponents({
     contents,
@@ -27,15 +28,29 @@ export const App = () => {
   const handleAddSection = async () => {
     await dispatch({
       type: "add_state",
-      payload: contents.map(({ content }) => content).join("\n"),
     });
     bottomRef?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
+  const handleChangeLanguage = (languageKey: LanguageKey) => {
+    console.log(languageKey);
+    dispatch({ type: "change_language", languageKey: languageKey });
+
+    topRef?.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <>
+      <div ref={topRef} />
       <div className={style.root}>
-        <Frame contents={contents} handleAddSection={handleAddSection}>
+        <Frame
+          contents={contents}
+          handleAddSection={handleAddSection}
+          handleChangeLanguage={handleChangeLanguage}
+        >
           <Spacer size={24} />
           <MainContent>
             <Section>

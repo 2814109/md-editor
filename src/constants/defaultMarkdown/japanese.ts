@@ -1,5 +1,2 @@
-export const defaultREADMEJapanese =
+export const readmeJapanese =
   "# プロジェクト名\n\nプロジェクトの簡潔な説明をここに入力します。\n\n## インストール\n\nこのプロジェクトをインストールするには、以下の手順を実行してください。\n\n```bash\ngit clone https://github.com/username/project.git\ncd project\nnpm install\n```\n\n## 使い方\n\nこのプロジェクトを使うには、以下の手順を実行してください。\n\n```bash\nnpm start\n```\n\n## 貢献\n\nこのプロジェクトに貢献するには、以下の手順を実行してください。\n\n1. フォークする\n2. ブランチを作成する (`git checkout -b feature/AmazingFeature`)\n3. 変更をコミットする (`git commit -m 'Add some AmazingFeature'`)\n4. ブランチにプッシュする (`git push origin feature/AmazingFeature`)\n5. プルリクエストを作成する\n\n## ライセンス\n\nこのプロジェクトはMITライセンスの下でリリースされています。";
-
-export const defaultREADMEEnglish =
-  "# Project Name\n\nEnter a brief description of your project here.\n\n## Installation\n\nTo install this project, run the following commands:\n\n```bash\ngit clone https://github.com/username/project.git\ncd project\nnpm install\n```\n\n## Usage\n\nTo use this project, run the following command:\n\n```bash\nnpm start\n```\n\n## Contributing\n\nTo contribute to this project, follow these steps:\n\n1. Fork it\n2. Create a feature branch (`git checkout -b feature/AmazingFeature`)\n3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)\n4. Push to the branch (`git push origin feature/AmazingFeature`)\n5. Open a pull request\n\n## License\n\nThis project is licensed under the MIT License.";

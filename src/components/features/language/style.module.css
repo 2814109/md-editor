@@ -1,0 +1,11 @@
+.languageSelector select,
+option {
+  cursor: pointer;
+  border-radius: 16px;
+  border: 3px #424040;
+  border-style: solid;
+  height: 100%;
+  width: 150px;
+  font-size: 16px;
+  padding: 8px;
+}
