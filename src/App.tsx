@@ -8,7 +8,7 @@ import { Spacer } from "./components/atoms/Spacer";
 import { PreviewSection } from "./components/features/previewSection";
 import { BottomAddSection } from "./components/atoms/icon/BottomAddSectionIcon";
 import { LanguageKey } from "./types/figurative/LanguageType";
-import { useContents } from "./hooks/useContent";
+// import { useContents } from "./hooks/useContent";
 import { useViewControll } from "./hooks/useViewControll";
 
 import { useEffect, useReducer } from "react";
