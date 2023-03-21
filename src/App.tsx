@@ -7,12 +7,12 @@ import { MainContent } from "./layouts/MainContent";
 import { MarkdownState } from "./recoil/atoms/markdown";
 import { contentReducer } from "./libs/reducer/contentReducer";
 import style from "./index.module.css";
-import ReactMarkdown from "react-markdown";
 import { Section } from "./layouts/Section";
-import remarkGfm from "remark-gfm";
 import { Spacer } from "./components/atoms/Spacer";
+import { PreviewSection } from "./components/features/previewSection";
+import { BottomAddSection } from "./components/atoms/icon/BottomAddSectionIcon";
 
-function App() {
+export const App = () => {
   const [markdown] = useRecoilState(MarkdownState);
   const [contents, dispatch] = useReducer(contentReducer, []);
   const bottomRef = useRef<HTMLDivElement>(null);
@@ -40,18 +40,12 @@ function App() {
           <MainContent>
             <Section>
               <DragAndDropArea />
+              <Spacer size={24} />
+              <BottomAddSection handleAddSection={handleAddSection} />
             </Section>
             <Section>
-              {contents?.length > 0 && (
-                <div className={`markdown-body ${style.previewContent}`}>
-                  <span>Preview</span>
-                  <ReactMarkdown
-                    children={contents.map(({ content }) => content).join("\n")}
-                    remarkPlugins={[remarkGfm]}
-                  />
-                  <Spacer size={16} />
-                </div>
-              )}
+              <PreviewSection contents={contents} />
+              <Spacer size={16} />
             </Section>
           </MainContent>
         </Frame>
@@ -59,6 +53,4 @@ function App() {
       <div ref={bottomRef} />
     </>
   );
-}
-
-export default App;
+};
