@@ -8,14 +8,21 @@ type Props = {
   handleAddSection: DispatchWithoutAction;
 };
 export const BottomAddSection: FC<Props> = ({ handleAddSection }) => (
-  <TabItem>
-    <label className={style.container}>
-      <i>
-        <FontAwesomeIcon className={style.icon} icon={faCirclePlus} />
-      </i>
-      <Spacer horizontal size={4} />
-      <div>Add Section</div>
-      <button onClick={handleAddSection} type="button" />
-    </label>
-  </TabItem>
+  <div className={style.bottomAddContentSection}>
+    <div>
+      <Spacer horizontal size={40} />
+    </div>
+    <div className={style.wrapper}>
+      <TabItem>
+        <label className={style.container}>
+          <i>
+            <FontAwesomeIcon className={style.icon} icon={faCirclePlus} />
+          </i>
+          <Spacer horizontal size={4} />
+          <div>Add Section</div>
+          <button onClick={handleAddSection} type="button" />
+        </label>
+      </TabItem>
+    </div>
+  </div>
 );

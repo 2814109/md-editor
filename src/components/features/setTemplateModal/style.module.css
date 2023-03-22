@@ -1,10 +1,10 @@
 .modalContainer {
   border-radius: 8px;
-  padding: 24px;
+  padding: 24px 12px;
   color: #292929;
   background-color: #eee;
-  width: 35vw;
-  height: 35vh;
+  width: 450px;
+  height: 300px;
 }
 
 .modalSelectSection {

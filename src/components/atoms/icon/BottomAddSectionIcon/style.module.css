@@ -1,16 +1,22 @@
-button[type="button"] {
-  display: none;
-}
-
 .icon {
   cursor: pointer;
   font-size: 24px;
 }
-
+.wrapper {
+  width: 100%;
+}
 .container {
   cursor: pointer;
   display: flex;
   height: 100%;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.bottomAddContentSection {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }

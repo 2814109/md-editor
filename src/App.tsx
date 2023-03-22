@@ -52,6 +52,7 @@ export const App = () => {
           <Spacer size={24} />
           <MainContent>
             <Section>
+              <h2 className={style.sectionTitle}>Edit</h2>
               <DragAndDropArea />
               <Spacer size={24} />
               {contents.length > 0 && (
@@ -59,6 +60,7 @@ export const App = () => {
               )}
             </Section>
             <Section>
+              <h2 className={style.sectionTitle}>Preview</h2>
               <PreviewSection contents={contents} />
               <Spacer size={16} />
             </Section>

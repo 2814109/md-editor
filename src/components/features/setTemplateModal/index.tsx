@@ -21,7 +21,9 @@ export const SetTemplateModal: FC<Props> = ({ handleClose, handleApply }) => {
 
   return (
     <div className={style.modalContainer}>
-      <h1>Please select a language.</h1>
+      <div className={style.modalSelectSection}>
+        <h1>Please select a language.</h1>
+      </div>
       <Spacer size={24} />
 
       <div className={style.modalSelectSection}>
@@ -33,7 +35,7 @@ export const SetTemplateModal: FC<Props> = ({ handleClose, handleApply }) => {
         </div>
       </div>
 
-      <Spacer size={36} />
+      <Spacer size={48} />
       <div className={style.modalBottomButtonSection}>
         <CancelIcon handleCancel={handleClose} />
         <ApplyTemplateIcon handleApply={handleOnClickApplyTemplate} />
