@@ -4,4 +4,5 @@
   border-style: solid;
   background: #e0e0e0;
   width: 100%;
+  overflow: hidden;
 }

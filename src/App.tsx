@@ -9,8 +9,7 @@ import { PreviewSection } from "./components/features/previewSection";
 import { BottomAddSection } from "./components/atoms/icon/BottomAddSectionIcon";
 import { LanguageKey } from "./types/figurative/LanguageType";
 import { useViewControll } from "./hooks/useViewControll";
-
-import { useContents } from "./hooks/_useContent";
+import { useContents } from "./hooks/useContent";
 
 export const App = () => {
   const { contents, dispatch } = useContents();
