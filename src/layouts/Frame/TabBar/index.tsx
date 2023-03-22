@@ -31,12 +31,14 @@ export const TabBar = ({
         <TemplateSection
           handleChangeTemplateLanguage={handleChangeTemplateLanguage}
         />
-        <FileImport handleClick={onFileInputChange} />
-        <DownloadButton />
+
         <ClearIcon handleInitialize={handleInitialize} />
       </div>
 
-      <div className={style.endContent}></div>
+      <div className={style.endContent}>
+        <FileImport handleClick={onFileInputChange} />
+        <DownloadButton />
+      </div>
     </div>
   );
 };
