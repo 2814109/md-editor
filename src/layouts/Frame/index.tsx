@@ -10,25 +10,17 @@ type Props = {
   contents: ContentType[];
   handleAddSection: DispatchWithoutAction;
   handleChangeTemplateLanguage: Dispatch<LanguageKey>;
+  handleInitialize: DispatchWithoutAction;
 };
 
-export const Frame: FC<Props> = ({
-  children,
-  contents,
-  handleAddSection,
-  handleChangeTemplateLanguage,
-}) => {
+export const Frame: FC<Props> = (props) => {
   return (
     <>
       <Header />
       <div className={style.stickyContainer}>
-        <TabBar
-          contents={contents}
-          handleAddSection={handleAddSection}
-          handleChangeTemplateLanguage={handleChangeTemplateLanguage}
-        />
+        <TabBar {...props} />
       </div>
-      <div className={style.contentContainer}>{children}</div>
+      <div className={style.contentContainer}>{props.children}</div>
     </>
   );
 };

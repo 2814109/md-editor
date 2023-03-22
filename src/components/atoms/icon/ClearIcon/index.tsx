@@ -1,18 +1,14 @@
-import { FC } from "react";
+import { DispatchWithoutAction, FC } from "react";
 import { faBroom } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import style from "./style.module.css";
 import { Spacer } from "../../Spacer";
 import { TabItem } from "../../../../styles/tabItem";
-import { markdownSelector } from "~/recoil/selectors/markdown/markdownSelector";
-import { useSetRecoilState } from "recoil";
-export const ClearIcon: FC = () => {
-  const set = useSetRecoilState(markdownSelector);
 
-  const handleClear = () => {
-    set(() => "");
-  };
-
+type Props = {
+  handleInitialize: DispatchWithoutAction;
+};
+export const ClearIcon: FC<Props> = ({ handleInitialize }) => {
   return (
     <TabItem>
       <label className={style.container}>
@@ -21,7 +17,7 @@ export const ClearIcon: FC = () => {
         </i>
         <Spacer horizontal size={4} />
         <div>Clear</div>
-        <button onClick={handleClear} type="button" />
+        <button onClick={handleInitialize} type="button" />
       </label>
     </TabItem>
   );

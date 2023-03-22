@@ -13,12 +13,14 @@ type TabBarProps = {
   contents: ContentType[];
   handleAddSection: DispatchWithoutAction;
   handleChangeTemplateLanguage: Dispatch<LanguageKey>;
+  handleInitialize: DispatchWithoutAction;
 };
 
 export const TabBar = ({
   contents,
   handleAddSection,
   handleChangeTemplateLanguage,
+  handleInitialize,
 }: TabBarProps): JSX.Element => {
   const { DownloadButton } = useRenderDownloadButton({ contents });
   const { onFileInputChange } = useOnFileInputChange();
@@ -31,7 +33,7 @@ export const TabBar = ({
         />
         <FileImport handleClick={onFileInputChange} />
         <DownloadButton />
-        <ClearIcon />
+        <ClearIcon handleInitialize={handleInitialize} />
       </div>
 
       <div className={style.endContent}></div>

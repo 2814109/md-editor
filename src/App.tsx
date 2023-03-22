@@ -8,32 +8,13 @@ import { Spacer } from "./components/atoms/Spacer";
 import { PreviewSection } from "./components/features/previewSection";
 import { BottomAddSection } from "./components/atoms/icon/BottomAddSectionIcon";
 import { LanguageKey } from "./types/figurative/LanguageType";
-// import { useContents } from "./hooks/useContent";
 import { useViewControll } from "./hooks/useViewControll";
 
-import { useEffect, useReducer } from "react";
-import { useRecoilValue } from "recoil";
-import { contentReducer } from "~/libs/reducer/contentReducer";
-import { makeContents } from "~/libs/reducer/contentReducer/makeContents";
-import { markdownSelector } from "~/recoil/selectors/markdown/markdownSelector";
+import { useContents } from "./hooks/_useContent";
 
 export const App = () => {
-  // const { contents, dispatch } = useContents();
+  const { contents, dispatch } = useContents();
 
-  const markdown = useRecoilValue(markdownSelector);
-  const initializeReducer = makeContents(markdown);
-
-  const [contents, dispatch] = useReducer(contentReducer, initializeReducer);
-  useEffect(() => {
-    markdown.length > 0
-      ? dispatch({
-          type: "set_state",
-          payload: markdown,
-        })
-      : dispatch({
-          type: "initialize_state",
-        });
-  }, [markdown]);
   const { TopAnchor, BottomAnchor, scrollToTop, scrollToBottom } =
     useViewControll();
 
@@ -47,6 +28,11 @@ export const App = () => {
       type: "add_state",
     });
     scrollToBottom();
+  };
+  const handleInitialize = () => {
+    dispatch({
+      type: "initialize_state",
+    });
   };
 
   const handleChangeTemplateLanguage = (languageKey: LanguageKey) => {
@@ -62,6 +48,7 @@ export const App = () => {
           contents={contents}
           handleAddSection={handleAddSection}
           handleChangeTemplateLanguage={handleChangeTemplateLanguage}
+          handleInitialize={handleInitialize}
         >
           <Spacer size={24} />
           <MainContent>
