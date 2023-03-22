@@ -31,7 +31,6 @@ export const TabBar = ({
         <TemplateSection
           handleChangeTemplateLanguage={handleChangeTemplateLanguage}
         />
-
         <ClearIcon handleInitialize={handleInitialize} />
       </div>
 

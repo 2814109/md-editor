@@ -10,7 +10,7 @@ type Props = {
 export const BottomAddSection: FC<Props> = ({ handleAddSection }) => (
   <div className={style.bottomAddContentSection}>
     <div>
-      <Spacer horizontal size={40} />
+      <Spacer horizontal size={30} />
     </div>
     <div className={style.wrapper}>
       <TabItem>
