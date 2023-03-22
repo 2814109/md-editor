@@ -1,4 +1,9 @@
 .iconContainer {
   display: flex;
   justify-content: end;
+  cursor: pointer;
+}
+
+.iconContainer i {
+  font-style: unset;
 }
