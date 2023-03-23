@@ -12,7 +12,7 @@ export const useRenderDownloadButton = ({ contents }: Props) => {
       type: "text/plain",
     });
     const link = document.createElement("a");
-    link.download = "remake.md";
+    link.download = "README.md";
     link.href = URL.createObjectURL(blob);
     link.click();
     URL.revokeObjectURL(link.href);
