@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { ContentType } from "~/types";
 import { FileExport } from "~/components/atoms/icon/FileExportIcon/index";
-type Props = {
-  contents: ContentType[];
-};
+import { useRecoilValue } from "recoil";
+import { markdownContentTypeSelector } from "~/recoil/selectors/markdown/markdownContentTypeSelector";
 
-export const useRenderDownloadButton = ({ contents }: Props) => {
+export const useRenderDownloadButton = () => {
+  const contents = useRecoilValue(markdownContentTypeSelector);
+
   const joinContents = contents?.map(({ content }) => content).join("\n");
   const handleMarkdownDownload = () => {
     const blob = new Blob([joinContents], {

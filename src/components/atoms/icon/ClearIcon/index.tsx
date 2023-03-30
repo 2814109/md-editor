@@ -4,11 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import style from "./style.module.css";
 import { Spacer } from "../../Spacer";
 import { TabItem } from "../../../../styles/tabItem";
+import { useResetRecoilState } from "recoil";
+import { markdownContentTypeSelector } from "~/recoil/selectors/markdown/markdownContentTypeSelector";
 
-type Props = {
-  handleInitialize: DispatchWithoutAction;
-};
-export const ClearIcon: FC<Props> = ({ handleInitialize }) => {
+export const ClearIcon: FC = () => {
+  const reset = useResetRecoilState(markdownContentTypeSelector);
+
   return (
     <TabItem>
       <label className={style.container}>
@@ -17,7 +18,7 @@ export const ClearIcon: FC<Props> = ({ handleInitialize }) => {
         </i>
         <Spacer horizontal size={4} />
         <div>Clear</div>
-        <button onClick={handleInitialize} type="button" />
+        <button onClick={reset} type="button" />
       </label>
     </TabItem>
   );

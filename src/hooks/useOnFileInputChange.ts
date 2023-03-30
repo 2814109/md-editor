@@ -1,8 +1,9 @@
-import { markdownSelector } from "~/recoil/selectors/markdown/markdownSelector";
+import { markdownContentTypeSelector } from "~/recoil/selectors/markdown/markdownContentTypeSelector";
 import { useSetRecoilState } from "recoil";
+import { makeContents } from "~/libs/reducer/contentReducer/makeContents";
 
 export const useOnFileInputChange = () => {
-  const set = useSetRecoilState(markdownSelector);
+  const set = useSetRecoilState(markdownContentTypeSelector);
   const onFileInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const reader = new FileReader();
     const file: FileList | null = event.target.files;
@@ -10,7 +11,7 @@ export const useOnFileInputChange = () => {
     if (file instanceof FileList) {
       reader.readAsText(file[0]);
       reader.onload = (e: ProgressEvent<FileReader>) => {
-        set(String(e?.target?.result));
+        set(makeContents(String(e?.target?.result)));
       };
     }
   };

@@ -7,57 +7,29 @@ import { Section } from "./layouts/Section";
 import { Spacer } from "./components/atoms/Spacer";
 import { PreviewSection } from "./components/features/previewSection";
 import { BottomAddSection } from "./components/atoms/icon/BottomAddSectionIcon";
-import { LanguageKey } from "./types/figurative/LanguageType";
 import { useViewControll } from "./hooks/useViewControll";
-import { useContents } from "./hooks/useContent";
+import { useRecoilValue } from "recoil";
+import { markdownContentTypeSelector } from "./recoil/selectors/markdown/markdownContentTypeSelector";
 
 export const App = () => {
-  const { contents, dispatch } = useContents();
+  const contents = useRecoilValue(markdownContentTypeSelector);
 
-  const { TopAnchor, BottomAnchor, scrollToTop, scrollToBottom } =
-    useViewControll();
+  const { TopAnchor, BottomAnchor } = useViewControll();
 
-  const { DragAndDropArea } = useDragComponents({
-    contents,
-    dispatch,
-  });
-
-  const handleAddSection = async () => {
-    await dispatch({
-      type: "add_state",
-    });
-    scrollToBottom();
-  };
-  const handleInitialize = () => {
-    dispatch({
-      type: "initialize_state",
-    });
-  };
-
-  const handleChangeTemplateLanguage = (languageKey: LanguageKey) => {
-    dispatch({ type: "change_template_language", languageKey: languageKey });
-    scrollToTop();
-  };
+  const { DragAndDropArea } = useDragComponents();
 
   return (
     <>
       <TopAnchor />
       <div className={style.root}>
-        <Frame
-          contents={contents}
-          handleAddSection={handleAddSection}
-          handleChangeTemplateLanguage={handleChangeTemplateLanguage}
-          handleInitialize={handleInitialize}
-        >
+        <Frame>
           <Spacer size={24} />
           <MainContent>
             <Section>
               <h2 className={style.sectionTitle}>Edit</h2>
               <DragAndDropArea />
               <Spacer size={24} />
-              {contents.length > 0 && (
-                <BottomAddSection handleAddSection={handleAddSection} />
-              )}
+              {contents.length > 0 && <BottomAddSection />}
             </Section>
             <Section>
               <h2 className={style.sectionTitle}>Preview</h2>
