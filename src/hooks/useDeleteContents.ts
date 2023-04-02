@@ -1,9 +1,10 @@
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { markdownContentTypeSelector } from "~/recoil/selectors/markdown/markdownContentTypeSelector";
-import { splitByTag } from "~/libs/reducer/contentReducer/splitByTag";
+import { useSplitByTag } from "~/hooks/useSplitByTag";
 import { ContentType } from "~/types";
 
 export const useDeleteContent = () => {
+  const { splitByTag } = useSplitByTag();
   const [markdown, set] = useRecoilState(markdownContentTypeSelector);
 
   const deleteContents = (content: ContentType) => {

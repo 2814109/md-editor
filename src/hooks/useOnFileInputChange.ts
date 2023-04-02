@@ -1,8 +1,9 @@
 import { markdownContentTypeSelector } from "~/recoil/selectors/markdown/markdownContentTypeSelector";
 import { useSetRecoilState } from "recoil";
-import { makeContents } from "~/libs/reducer/contentReducer/makeContents";
+import { useMakeContents } from "~/hooks/useMakeContents";
 
 export const useOnFileInputChange = () => {
+  const { makeContents } = useMakeContents();
   const set = useSetRecoilState(markdownContentTypeSelector);
   const onFileInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const reader = new FileReader();

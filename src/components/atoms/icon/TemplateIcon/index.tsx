@@ -10,9 +10,10 @@ import { SetTemplateModal } from "~/components/features/setTemplateModal";
 import { useSetRecoilState } from "recoil";
 import { markdownContentTypeSelector } from "~/recoil/selectors/markdown/markdownContentTypeSelector";
 import { languageAndReadmeMap } from "~/constants/languageAndReadmeMap";
-import { splitByTag } from "~/libs/reducer/contentReducer/splitByTag";
+import { useSplitByTag } from "~/hooks/useSplitByTag";
 
 export const TemplateSection: FC = () => {
+  const { splitByTag } = useSplitByTag();
   const set = useSetRecoilState(markdownContentTypeSelector);
 
   const [Modal, open, close] = useModal("root", {

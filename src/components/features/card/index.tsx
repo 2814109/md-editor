@@ -35,7 +35,7 @@ export const CardSection: FC<Props> = ({
 
   return (
     <>
-      {isEdit || content.content.length === 0 ? (
+      {isEdit || content.content === "# " ? (
         <div className={style.editCardSection}>
           {/* substitute DraggableIcon */}
           <DeleteIcon handleDelete={handleDelete} />

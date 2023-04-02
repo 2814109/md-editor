@@ -2,8 +2,8 @@ import { FC } from "react";
 import { CardSection } from "../card/index";
 
 import style from "./style.module.css";
-import { useUpdateContent } from "~/hooks/updateContents";
-import { useDeleteContent } from "~/hooks/deleteContents";
+import { useUpdateContent } from "~/hooks/useUpdateContents";
+import { useDeleteContent } from "~/hooks/useDeleteContents";
 import { useDragAndDrop } from "~/hooks/useDragAndDrop";
 import { useRecoilState } from "recoil";
 import { markdownContentTypeSelector } from "~/recoil/selectors/markdown/markdownContentTypeSelector";

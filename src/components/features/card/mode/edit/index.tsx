@@ -2,7 +2,7 @@ import { Dispatch, DispatchWithoutAction, FC, useState } from "react";
 import { ContentType } from "~/types";
 import style from "./style.module.css";
 import { SaveCardIcon } from "~/components/atoms/icon/SaveCardIcon";
-import { isIncludeTag } from "~/libs/reducer/presentation/isIncludeTag";
+import { useIsIncludeTag } from "~/hooks/useIsIncludeTag";
 
 type EditCardProps = {
   content: ContentType;
@@ -15,10 +15,11 @@ export const EditMode: FC<EditCardProps> = ({
   updateContents,
   content,
 }) => {
+  const { isIncludeTag } = useIsIncludeTag();
   const [editContent, setEditContent] = useState<string>(content.content);
 
   const handleUpdateContents = () => {
-    isIncludeTag(editContent)
+    isIncludeTag(editContent.split("\n")[0])
       ? updateContents({ id: content.id, content: editContent })
       : window.alert("The first line must have one to two # symbols");
   };
