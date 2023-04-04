@@ -1,12 +1,12 @@
 import { useSetRecoilState } from "recoil";
-import { useViewControll } from "~/hooks/useViewControll";
+import { useViewControl } from "~/hooks/useViewControl";
 import { markdownContentTypeSelector } from "~/recoil/selectors/markdown/markdownContentTypeSelector";
 import { useSplitByTag } from "~/hooks/useSplitByTag";
 
 export const useAddSection = () => {
   const { splitByTag } = useSplitByTag();
   const set = useSetRecoilState(markdownContentTypeSelector);
-  const { scrollToBottom } = useViewControll();
+  const { scrollToBottom } = useViewControl();
   const handleAddSection = () => {
     set((currentValue) => {
       const contents = currentValue.map(({ content }) => content).join("\n");

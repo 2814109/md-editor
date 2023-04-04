@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { scrollIntoViewCurrentRef } from "~/libs/common/scrollIntoViewCurrentRef";
 
-export const useViewControll = () => {
+export const useViewControl = () => {
   const bottomRef = useRef<HTMLDivElement>(null);
   const topRef = useRef<HTMLDivElement>(null);
 

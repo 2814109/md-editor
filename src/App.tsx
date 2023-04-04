@@ -7,7 +7,7 @@ import { Section } from "./layouts/Section";
 import { Spacer } from "./components/atoms/Spacer";
 import { PreviewSection } from "./components/features/previewSection";
 import { BottomAddSection } from "./components/atoms/icon/BottomAddSectionIcon";
-import { useViewControll } from "./hooks/useViewControll";
+import { useViewControl } from "./hooks/useViewControl";
 import { useRecoilValue } from "recoil";
 import { markdownContentTypeSelector } from "./recoil/selectors/markdown/markdownContentTypeSelector";
 import { useSeparateLevel } from "./hooks/useSeparateLevel";
@@ -15,7 +15,7 @@ import { useSeparateLevel } from "./hooks/useSeparateLevel";
 export const App = () => {
   const contents = useRecoilValue(markdownContentTypeSelector);
   const { onClick } = useSeparateLevel();
-  const { TopAnchor, BottomAnchor } = useViewControll();
+  const { TopAnchor, BottomAnchor } = useViewControl();
 
   const { DragAndDropArea } = useDragComponents();
 
