@@ -11,6 +11,8 @@ import { useViewControl } from "./hooks/useViewControl";
 import { useRecoilValue } from "recoil";
 import { markdownContentTypeSelector } from "./recoil/selectors/markdown/markdownContentTypeSelector";
 import { useSeparateLevel } from "./hooks/useSeparateLevel";
+import { SelectSeparateLevel } from "./components/features/selectSeparateLevel";
+import { SubContent } from "./layouts/SubContent";
 
 export const App = () => {
   const contents = useRecoilValue(markdownContentTypeSelector);
@@ -24,8 +26,12 @@ export const App = () => {
       <TopAnchor />
       <div className={style.root}>
         {/* <button onClick={() => onClick()}>test</button> */}
+
         <Frame>
           <Spacer size={24} />
+          <SubContent>
+            <SelectSeparateLevel />
+          </SubContent>
           <MainContent>
             <Section>
               <h2 className={style.sectionTitle}>Edit</h2>
