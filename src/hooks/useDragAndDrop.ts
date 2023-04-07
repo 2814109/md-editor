@@ -5,7 +5,7 @@ import {
   handleDragStart,
   handleDragOver,
 } from "~/libs/feature/dragAndDrop/handleDrag";
-import { replaceArrayElements } from "~/libs/feature/dragAndDrop/replaceArrayElements";
+import { reSortArrayElements } from "~/libs/feature/dragAndDrop/reSortArrayElements";
 import { useRecoilState } from "recoil";
 import { markdownContentTypeSelector } from "~/recoil/selectors/markdown/markdownContentTypeSelector";
 
@@ -40,7 +40,7 @@ export const useDragAndDrop = () => {
       markdown,
       draggingElementPrimaryKey
     );
-    const replaceList = replaceArrayElements(
+    const replaceList = reSortArrayElements(
       markdown,
       hoveredElementIndex,
       draggingElementIndex
